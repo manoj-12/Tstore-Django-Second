@@ -1,0 +1,2449 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>E-store-single page</title>
+  <link rel="icon" href="img/small-logo.png" type="image/icon type">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- bootstrap icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <!-- css -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- owl Carousel -->
+  <link rel="stylesheet" href="css/owl.carousel.css">
+  <link rel="stylesheet" href="css/owl.theme.default.css">
+  <!-- js slider -->
+  <link rel="stylesheet" href="css/splide.min.css">
+  <!-- <link rel="stylesheet" href="css/splide.min.css"> -->
+  <link rel="stylesheet" href="css/splide-default.min.css">
+  <!-- AOS Animatiom -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Nav Bar Start Here -->
+  <div class="container-fluid main-section-nav">
+    <nav class="navbar navbar-expand-lg navbar-light middle-nav">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="" class="img-fluid logo"></a>
+        <a href="index.html"><img src="img/small-logo.png" class="img-fluid small-logo" alt=""></a>
+        <div class="d-flex person-info">
+          <!-- wish list  section -->
+          <div class="wish-list">
+            <i class="bi bi-suit-heart" data-bs-toggle="tooltip" data-bs-placement="top" title="wish list"></i>
+          </div>
+          <!-- wish list section end -->
+
+          <!-- user section -->
+          <div class="user-model-box" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="bi bi-person user-icons"></i> <span class="singin-text">Hello, Sing In</span> <span
+              class="account-name">My Account</span>
+          </div>
+          <!-- </button> -->
+          <!-- Modal -->
+
+          <!-- user section end -->
+
+          <!-- cart section -->
+          <div class="cart-detail" data-bs-toggle="modal" data-bs-target="#cart-detail-model">
+            <div class="cart-info">
+              <i class="bi bi-cart3"></i>
+              <span class="position-absolute start-1 translate-middle badge rounded-pill bg-danger" style="margin: 0px 0px 0px -5px;
+                      font-size: 12px;">
+                <small>4</small>
+              </span>
+              <span class="mycart-text">My Cart
+              </span>
+              <span class="price">$125.00</span>
+            </div>
+          </div>
+          <!-- cart section end -->
+        </div>
+      </div>
+    </nav>
+    <!-- search Section -->
+    <div class="container">
+      <div class="row d-flex">
+        <!-- <div class="col-12"> -->
+        <form class="search-form">
+          <input class="form-control fw-bold" type="" placeholder="Search for product" aria-label="Search">
+          <button class="btn search-icon seaarch-icon-2" type="submit"><i class="bi bi-search "></i></button>
+        </form>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- User model Start here -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="background: #f6f9fc;">
+
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item item-first fw-bold" id="signin"><i class="bi bi-lock"></i> Sign in</li>
+            <li class="list-group-item item-second fw-bold signUp"><i class="bi bi-person"></i>
+              Sign up</li>
+          </ul>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Sign In Form -->
+          <form class="row g-3" id="signinform">
+            <div class="col-12">
+              <label for="inputEmail4" class="form-label fw-bold">Email</label>
+              <input type="email" class="form-control" id="inputEmail4">
+            </div>
+            <div class="col-12">
+              <label for="inputPassword4" class="form-label fw-bold">Password</label>
+              <input type="password" class="form-control" id="inputPassword4">
+            </div>
+            <div class="d-flex justify-content-between">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <label class="form-check-label fw-bold" for="inlineCheckbox1">Remember
+                  me
+                </label>
+              </div>
+              <div class="form-check form-check-inline frgpswd">
+                <p class="fw-bold">Forgot password?</p>
+              </div>
+            </div>
+            <div class="d-grid gap-2">
+              <button class="btn signin-button text-white" type="button">Sign in</button>
+            </div>
+          </form>
+          <!-- Sign Up Form -->
+          <form class="row g-3" id="signupform">
+            <div class="col-12">
+              <label for="first-name" class="fw-bold">First Name</label>
+              <input type="text" class="form-control" aria-label="First name" id="first-name">
+            </div>
+            <div class="col-12">
+              <label for="last-name" class="fw-bold">Last Name</label>
+              <input type="text" class="form-control" aria-label="Last name" id="last-name">
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="fw-bold">E-mail</label>
+              <input type="email" class="form-control" id="email">
+            </div>
+            <div class="col-12">
+              <label for="password" class="fw-bold">Password</label>
+              <input type="password" class="form-control" id="password">
+            </div>
+            <div class="col-12">
+              <label for="confirm-password" class="fw-bold">Confirm-Password</label>
+              <input type="password" class="form-control" id="confirm-password">
+            </div>
+            <div class="d-grid gap-2">
+              <button class="btn signin-button text-white" type="button">Sign up</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- cart model start -->
+  <div class="modal fade" id="cart-detail-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="background: #f6f9fc;">
+          <h5 class="modal-title fw-bold" id="exampleModalLabel">Your Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group cart-item-list list-group-horizontal cart-product-list">
+            <li class="list-group-item  "><img src="img/shoose01.jpg" class="img-fluid " alt="">
+            </li>
+            <li class="list-group-item fw-bold"> <span class="product-name fw-bold">Sneakers</span>
+              <p class="fw-bold">$150
+                <span class="">x 1</span>
+              </p>
+            </li>
+            <li class="list-group-item mx-5 fw-bold cart-item-remove-button">X</li>
+          </ul>
+          <ul class="list-group cart-item-list list-group-horizontal">
+            <li class="list-group-item"><img src="img/bag02.jpg" class="img-fluid" alt="">
+            </li>
+            <li class=" list-group-item fw-bold"> <span class="product-names fw-bold">Backpack</span>
+              <p class="fw-bold">$150
+                <span class="">x 1</span>
+              </p>
+            </li>
+            <li class="list-group-item mx-5 fw-bold">X</li>
+          </ul>
+          <ul class="list-group cart-item-list list-group-horizontal">
+            <li class="list-group-item"><img src="img/cap03.jpg" class="img-fluid" alt="">
+            </li>
+            <li class=" list-group-item fw-bold"> <span class="product-names fw-bold">Stash
+                Hat</span>
+              <p class="fw-bold">$150
+                <span class="">x 1</span>
+              </p>
+            </li>
+            <li class="list-group-item mx-5 fw-bold">X</li>
+          </ul>
+          <div class="d-grid gap-2">
+            <button class="btn signin-button text-white" type="button"><i class="bi bi-credit-card-2-back"></i>
+              &nbsp;&nbsp;Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- sub nav bar start here -->
+  <div class="main-ulist">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="toggle"><i class="bi bi-list"></i></div>
+        <div class="cross"><i class="bi bi-x-square"></i></div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <nav class="nav-bar">
+        <ul>
+          <li><a href="#">All Category</i></a>
+            <ul>
+              <li><a href="#">Men's</a></li>
+              <li><a href="#">Women's</a>
+              </li>
+              <li><a href="#">Kid's</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Men's</a></li>
+          <li><a href="#">Women's</a>
+            <ul>
+              <li><a href="#">Jean's</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Kid's</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <!-- sub nav End -->
+
+  <div class="filter-productlist mt-5">
+    <div class="container-fluid">
+      <div class="row filter-row">
+        <!-- filter section start here  -->
+        <div class="col-lg-3 filter-section">
+          <div class="main-bodyfilter">
+            <div class="row">
+              <div class="main-category-body">
+                <div class="cotegory-name">
+                  <p class="fw-bold">Filters</p>
+                  <div class="accordion">
+                    <!-- clothing section start here -->
+                    <div class="accordion-item" id="headingOne">
+                      <h2 class="accordion-headingOne" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <p class="fw-bold m-0">Clothing</p>
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#headingOne">
+                        <div class="accordion-body accordion-body-cloth">
+                          <form class="d-flex filter-search">
+                            <input class="form-control me-2z" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn filter-submit-icons" type="submit"><i
+                                class="bi bi-search filter-submitIcon"></i>
+                            </button>
+                          </form>
+                          <div class="clothing-main-body">
+                            <ul class="clothing-main-ul">
+                              <li><a href="#">View all </a></li>
+                              <li><a href="#">High Heels</a></li>
+                              <li><a href="#">Ballerinas Flats</a></li>
+                              <li><a href="#">Sandals</a></li>
+                              <li><a href="#">Sneakers</a></li>
+                              <li><a href="#">Boots</a></li>
+                              <li><a href="#">Ankle Boots</a></li>
+                              <li><a href="#">Loafers</a></li>
+                              <li><a href="#">Slip-on</a></li>
+                              <li><a href="#">Flip Flops</a></li>
+                              <li><a href="#">Clogs Mules</a></li>
+                              <li><a href="#">Athletic Shoes</a></li>
+                              <li><a href="#">Oxfords</a></li>
+                              <li><a href="#">Smart Shoe</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- clothing end here -->
+                    <!-- brand section start here -->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                          aria-controls="panelsStayOpen-collapseTwo">
+                          <span class="fw-bold">Brands</span>
+                        </button>
+                      </h2>
+                      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                        aria-labelledby="panelsStayOpen-headingTwo">
+                        <div class="accordion-body accordion-body-cloth">
+                          <form class="d-flex filter-search">
+                            <input class="form-control me-2z" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn filter-submit-icons" type="submit"><i
+                                class="bi bi-search filter-submitIcon"></i></button>
+                          </form>
+                          <div class="brand-main-body">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="Adidas">
+                              <label class="form-check-label" for="Adidas">
+                                <div class="brand-name">Adidas</div>
+                                <div class="totalproduct">990</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="AnnTaylor">
+                              <label class="form-check-label" for="AnnTaylor">
+                                <div class="brand-name">Ann Taylor</div>
+                                <div class="totalproduct">15</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="Armani">
+                              <label class="form-check-label" for="Armani">
+                                <div class="brand-name">Armani</div>
+                                <div class="totalproduct">18</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="BananaRepublic">
+                              <label class="form-check-label" for="BananaRepublic">
+                                <div class="brand-name">Banana Republic</div>
+                                <div class="totalproduct">103</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="Bilabong">
+                              <label class="form-check-label" for="Bilabong">
+                                <div class="brand-name">Bilabong</div>
+                                <div class="totalproduct">10</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="Birkenstock">
+                              <label class="form-check-label" for="Birkenstock">
+                                <div class="brand-name">Birkenstock</div>
+                                <div class="totalproduct">27</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="CalvinKlein">
+                              <label class="form-check-label" for="CalvinKlein">
+                                <div class="brand-name">Calvin Klein</div>
+                                <div class="totalproduct">365</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="Columbia">
+                              <label class="form-check-label" for="Columbia">
+                                <div class="brand-name">Columbia</div>
+                                <div class="totalproduct">508</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="Converse">
+                              <label class="form-check-label" for="Converse">
+                                <div class="brand-name">Converse</div>
+                                <div class="totalproduct">176</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="Dockers">
+                              <label class="form-check-label" for="Dockers">
+                                <div class="brand-name">Dockers</div>
+                                <div class="totalproduct">57</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="FruitoftheLoom">
+                              <label class="form-check-label" for="FruitoftheLoom">
+                                <div class="brand-name">Fruit of the Loom</div>
+                                <div class="totalproduct">739</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="Hanes">
+                              <label class="form-check-label" for="Hanes">
+                                <div class="brand-name">Hanes</div>
+                                <div class="totalproduct">92</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="JimmyChoo">
+                              <label class="form-check-label" for="JimmyChoo">
+                                <div class="brand-name">Jimmy Choo</div>
+                                <div class="totalproduct">17</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="Levi">
+                              <label class="form-check-label" for="Levi">
+                                <div class="brand-name">Levi's</div>
+                                <div class="totalproduct">351</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="Lee">
+                              <label class="form-check-label" for="Lee">
+                                <div class="brand-name">Lee</div>
+                                <div class="totalproduct">264</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="MenWearhouse">
+                              <label class="form-check-label" for="MenWearhouse">
+                                <div class="brand-name">Men's Wearhouse</div>
+                                <div class="totalproduct">75</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="NewBalance">
+                              <label class="form-check-label" for="NewBalance">
+                                <div class="brand-name">New Balance</div>
+                                <div class="totalproduct">218</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="Nike">
+                              <label class="form-check-label" for="Nike">
+                                <div class="brand-name">Nike</div>
+                                <div class="totalproduct">810</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="TommyHilfiger">
+                              <label class="form-check-label" for="TommyHilfiger">
+                                <div class="brand-name">Tommy Hilfiger</div>
+                                <div class="totalproduct">57</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="OldNavy">
+                              <label class="form-check-label" for="OldNavy">
+                                <div class="brand-name">Old Navy</div>
+                                <div class="totalproduct">174</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="Puma">
+                              <label class="form-check-label" for="Puma">
+                                <div class="brand-name">Puma</div>
+                                <div class="totalproduct">370</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="Reebok">
+                              <label class="form-check-label" for="Reebok">
+                                <div class="brand-name">Reebok</div>
+                                <div class="totalproduct">506</div>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- brand end here -->
+                    <!-- size section start here -->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                          aria-controls="panelsStayOpen-collapseThree">
+                          <span class="fw-bold">Size</span>
+                        </button>
+                      </h2>
+                      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="panelsStayOpen-headingThree">
+                        <div class="accordion-body accordion-body-cloth">
+                          <form class="d-flex filter-search">
+                            <input class="form-control me-2z" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn filter-submit-icons" type="submit"><i
+                                class="bi bi-search filter-submitIcon"></i></button>
+                          </form>
+                          <div class="brand-main-body">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="XL">
+                              <label class="form-check-label" for="XL">
+                                <div class="brand-name">XL</div>
+                                <div class="totalproduct">390</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="XXL">
+                              <label class="form-check-label" for="XXL">
+                                <div class="brand-name">XXL</div>
+                                <div class="totalproduct">50</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="S">
+                              <label class="form-check-label" for="S">
+                                <div class="brand-name">S</div>
+                                <div class="totalproduct">408</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="M">
+                              <label class="form-check-label" for="M">
+                                <div class="brand-name">M</div>
+                                <div class="totalproduct">103</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="L">
+                              <label class="form-check-label" for="L">
+                                <div class="brand-name">L</div>
+                                <div class="totalproduct">10</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="39">
+                              <label class="form-check-label" for="39">
+                                <div class="brand-name">39</div>
+                                <div class="totalproduct">27</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="40">
+                              <label class="form-check-label" for="40">
+                                <div class="brand-name">40</div>
+                                <div class="totalproduct">65</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="41">
+                              <label class="form-check-label" for="41">
+                                <div class="brand-name">41</div>
+                                <div class="totalproduct">608</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="42">
+                              <label class="form-check-label" for="42">
+                                <div class="brand-name">42</div>
+                                <div class="totalproduct">176</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="43">
+                              <label class="form-check-label" for="43">
+                                <div class="brand-name">43</div>
+                                <div class="totalproduct">570</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="44">
+                              <label class="form-check-label" for="44">
+                                <div class="brand-name">44</div>
+                                <div class="totalproduct">740</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="45">
+                              <label class="form-check-label" for="45">
+                                <div class="brand-name">45</div>
+                                <div class="totalproduct">902</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="46">
+                              <label class="form-check-label" for="46">
+                                <div class="brand-name">46</div>
+                                <div class="totalproduct">170</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="47">
+                              <label class="form-check-label" for="47">
+                                <div class="brand-name">47</div>
+                                <div class="totalproduct">341</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="48">
+                              <label class="form-check-label" for="48">
+                                <div class="brand-name">48</div>
+                                <div class="totalproduct">264</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="49">
+                              <label class="form-check-label" for="49">
+                                <div class="brand-name">49</div>
+                                <div class="totalproduct">750</div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="50">
+                              <label class="form-check-label" for="50">
+                                <div class="brand-name">50</div>
+                                <div class="totalproduct">288</div>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- size end here -->
+
+                    <!-- color section start here -->
+                    <div class="accordion" id="headingFour">
+                      <div class="accordion-item">
+                        <h2 class="accordion-headingFour" id="headingFour">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                            <span class="fw-bold color-name">Colors</span>
+                          </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour"
+                          data-bs-parent="#headingFour">
+                          <div class="accordion-body">
+                            <div class="row">
+                              <div class="col-3 col-md-3 p-1 d-flex justify-content-center">
+                                <div class="color-filter">
+                                  <div class="blue-gray">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-3 col-md-3 p-1 d-flex justify-content-center">
+                                <div class="color-filter">
+                                  <div class="bugundy">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-3 col-md-3 p-1 d-flex justify-content-center">
+                                <div class="color-filter">
+                                  <div class="teal">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-3 col-md-3 p-1 d-flex justify-content-center">
+                                <div class="color-filter">
+                                  <div class="brown">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-3 col-md-3 p-1 d-flex justify-content-center">
+                                <div class="color-filter">
+                                  <div class="red">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-3 col-md-3 p-1 d-flex justify-content-center">
+                                <div class="color-filter">
+                                  <div class="charcol">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-3 col-md-3 p-1 d-flex justify-content-center">
+                                <div class="color-filter">
+                                  <div class="navy">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-3 col-md-3 p-1 d-flex justify-content-center">
+                                <div class="color-filter">
+                                  <div class="skyblue">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <!-- color ends here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- filter section start end here -->
+
+        <!-- single page product start here -->
+        <!-- short section start here -->
+        <div class="col-md-9 product-list-main-colum">
+          <div class="row short-section-row">
+            <div class="short-body d-flex justify-content-start">
+              <div class="btn-group short-button mx-2" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+                <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span>Short by:</span>
+                  <span class="fw-bold">Recommended</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end short-droupdown">
+                  <li><button class="dropdown-item fw-bold" type="button">Low - Hight Price</button></li>
+                  <li><button class="dropdown-item fw-bold" type="button">High - Low Price</button></li>
+                  <li><button class="dropdown-item fw-bold" type="button">Average Rating</button></li>
+                  <li><button class="dropdown-item fw-bold" type="button">A - Z Order</button></li>
+                  <li><button class="dropdown-item fw-bold" type="button">Z - A Order</button></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- short section end here -->
+          <!-- product section start here  -->
+          <div class="row product-row mx-2">
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 mt-2 prod-list-colum">
+              <div class="main-body-prodlist">
+                <div class="prodlist-view-wish-cart">
+                  <ul class="view-list-cart">
+                    <li><a href=""><i class="bi bi-suit-heart-fill"></i></a></li>
+                    <li><a href=""><i class="bi bi-cart3"></i></a></li>
+                    <li><a href=""><i class="bi bi-eye-fill"></i></a></li>
+                  </ul>
+                </div>
+                <div class="prodlist-img">
+                  <figure class="figure">
+                    <img class="figure-img img-fluid" src="img/product/kid/kid1.webp" alt="">
+                  </figure>
+                </div>
+                <div class="prodlist-name">
+                  <p><a href=""> Product Name</a></p>
+                </div>
+                <div class="prodlist-price-ratting">
+                  <div class="prodlist-price">
+                    <p>$120.0</p>
+                  </div>
+                  <div class="prodlist-ratting">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- product section end here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid filter-short-icon">
+    <div class="row">
+      <div class="col-6 d-flex justify-content-center">
+        <div class="filter-icon">
+          <p><i class="bi bi-filter"></i>Filter</p>
+          <span></span>
+        </div>
+      </div>
+      <div class="col-6 d-flex justify-content-center">
+        <div class="short-icon">
+          <p><i class="bi bi-arrow-down-up"></i>short by</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- footer section start here  -->
+  <div class="footer mx-3 pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <div class="footer-main-body">
+            <div class="footer-name">
+              <h3>Shop Department</h3>
+            </div>
+            <div class="footer-product-name">
+              <ul class="footer-ul-item">
+                <li class=""><a class="" href="#">Sneakers &amp; Athletic</a></li>
+                <li class=""><a class="" href="#">Athletic Apparel</a></li>
+                <li class=""><a class="" href="#">Sandals</a></li>
+                <li class=""><a class="" href="#">Jeans</a></li>
+                <li class=""><a class="" href="#">Shirts &amp; Tops</a></li>
+                <li class=""><a class="" href="#">Shorts</a></li>
+                <li class=""><a class="" href="#">T-Shirts</a></li>
+                <li class=""><a class="" href="#">Swimwear</a></li>
+                <li class=""><a class="" href="#">Clogs &amp; Mules</a></li>
+                <li class=""><a class="" href="#">Bags &amp; Wallets</a></li>
+                <li class=""><a class="" href="#">Accessories</a></li>
+                <li class=""><a class="" href="#">Sunglasses &amp; Eyewear</a></li>
+                <li class=""><a class="" href="#">Watches</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="footer-main-body">
+            <div class="footer-name">
+              <h3>Account & shipping info</h3>
+            </div>
+            <div class="footer-product-name">
+              <ul class="footer-ul-item">
+                <li class=""><a class="" href="#">Your account</a></li>
+                <li class=""><a class="" href="#">Shipping rates &amp; policies</a></li>
+                <li class=""><a class="" href="#">Refunds &amp; replacements</a></li>
+                <li class=""><a class="" href="#">Order tracking</a></li>
+                <li class=""><a class="" href="#">Delivery info</a></li>
+                <li class=""><a class="" href="#">Taxes &amp; fees</a></li>
+              </ul>
+            </div>
+            <div class="about-us">
+              <h3>About us</h3>
+              <ul class="footer-ul-item">
+                <li class=""><a class="" href="#">About company</a></li>
+                <li class=""><a class="" href="#">Our team</a></li>
+                <li class=""><a class="" href="#">Careers</a></li>
+                <li class=""><a class="" href="#">News</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="footer-main-body">
+            <div class="footer-name">
+              <h3>Stay informed</h3>
+            </div>
+            <div class="footer-product-name">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control fw-bold" placeholder="Your email"
+                  aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <span class="input-group-text" id="basic-addon2">Subscribe</span>
+              </div>
+              <p class="subs-theory">Subscribe to our newsletter to receive early discount offers, updates and new
+                products info.</p>
+            </div>
+            <div class="footer-name">
+              <h3>Download our app</h3>
+              <img src="img/logo/footerapplogo.png" class="img-fluid footer-img" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- footer section End here  -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <!-- js slider -->
+  <!-- owl Carousel js -->
+  <script src="js/owl.carousel.js"></script>
+  <!-- js -->
+  <script src="js/main.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/splide.min.js"></script>
+  <script>
+
+  </script>
+</body>
+
+</html>
