@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content%}
+<div class="row justify-content-center">
+    <div class="col-md-5 border mx-5  mt-5 mb-5 pt-3 pb-3 shadow-sm">
+        <!-- <form action="/accounts/login" method='POST'>
+           
+
+            <div class="col-12">
+                <label for="first-name" class="fw-bold">First Name</label>-
+                <input type="text" class="form-control" aria-label="First name" id="first-name" name="firstname">
+            </div>
+            <div class="col-12"> <label for="last-name" class="fw-bold">Last Name</label>
+                <input type="text" class="form-control" aria-label="Last name" id="last-name" name="lastname">-
+            </div>
+            <div class="col-12">
+                <label for="email" class="fw-bold">E-mail</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="col-12">
+
+ 
+                <label for="password" class="fw-bold">Password</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <div class="col-12">
+                <label for="confirm-password" class="fw-bold">Confirm-Password</label>
+                <input type="password" class="form-control" id="confirm-password" name="confirmoassword">
+            </div> -->
+            <!-- <div class="mt-2">
+                <input type="submit" class="btn signin-button text-white" value="Register">
+            </div> -->
+
+            
+           
+        <!-- </form> -->
+        <form action="/accounts/register" method="post">
+            {% csrf_token %}
+            {{form|crispy}}
+            <input type="submit" class="btn signin-button text-white" value="Creat Account">
+        </form>
+    </div>
+</div>
+
+{% endblock%}

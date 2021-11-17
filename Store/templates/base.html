@@ -32,27 +32,27 @@
 <div class="container-fluid main-section-nav">
   <nav class="navbar navbar-expand-lg navbar-light middle-nav">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="{% static 'img/logo.png' %}" alt="" class="img-fluid logo"></a>
-      <a href=""><img src="{% static 'img/small-logo.png' %}" class="img-fluid small-logo" alt=""></a>
-      <div class="d-flex person-info">
-        <!-- wish list  section -->
-        <div class="wish-list">
+      <a class="navbar-brand" href="/"><img src="{% static 'img/logo.png' %}" alt="" class="img-fluid logo"></a>
+      <a href="/"><img src="{% static 'img/small-logo.png' %}" class="img-fluid small-logo" alt=""></a>
+      <!-- <div class="d-flex person-info"> -->
+      <!-- wish list  section -->
+      <!-- <div class="wish-list">
           <i class="bi bi-suit-heart" data-bs-toggle="tooltip" data-bs-placement="top" title="wish list"></i>
-        </div>
-        <!-- wish list section end -->
+        </div> -->
+      <!-- wish list section end -->
 
-        <!-- user section -->
-        <div class="user-model-box" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <!-- user section -->
+      <!-- <div class="user-model-box" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="bi bi-person user-icons"></i> <span class="singin-text">Hello, Sing In</span> <span
             class="account-name">My Account</span>
-        </div>
-        <!-- </button> -->
-        <!-- Modal -->
+        </div> -->
+      <!-- </button> -->
+      <!-- Modal -->
 
-        <!-- user section end -->
+      <!-- user section end -->
 
-        <!-- cart section -->
-        <div class="cart-detail" data-bs-toggle="modal" data-bs-target="#cart-detail-model">
+      <!-- cart section -->
+      <!-- <div class="cart-detail" data-bs-toggle="modal" data-bs-target="#cart-detail-model">
           <div class="cart-info">
             <i class="bi bi-cart3"></i>
             <span class="position-absolute start-1 translate-middle badge rounded-pill bg-danger" style="margin: 0px 0px 0px -5px;
@@ -63,27 +63,52 @@
             </span>
             <span class="price">$125.00</span>
           </div>
+        </div> -->
+      <!-- cart section end -->
+      <!-- </div> -->
+      <ul class="list-group list-group-horizontal">
+        <!-- <li class="list-group-item"> -->
+        {% if request.user.is_authenticated %}
+        <div class="btn-group manoj1">
+          <button type="button" class="user-name btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static"
+            aria-expanded="false">{{request.user.first_name.0}}</button>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+            <li><a class="dropdown-item" href="#">Order</a></li>
+            <li><a class="dropdown-item" href="/accounts/LogOut">Log Out</a></li>
+          </ul>
         </div>
-        <!-- cart section end -->
-      </div>
+        <li class="list-group-item">cart</li>
+        {% else %}
+        <a href="/accounts/register">
+          <li class="list-group-item">Sign Up</li>
+        </a>
+
+        <a href="/accounts/login">
+          <li class="list-group-item">Login</li>
+        </a>
+        <li class="list-group-item">cart</li>
+    
+        {% endif %}
+      </ul>
+  
     </div>
   </nav>
   <!-- search Section -->
   <div class="container">
     <div class="row d-flex">
-      <!-- <div class="col-12"> -->
+    
       <form class="search-form">
         <input class="form-control fw-bold" type="" placeholder="Search for product" aria-label="Search">
         <button class="btn search-icon seaarch-icon-2" type="submit"><i class="bi bi-search "></i></button>
       </form>
-      <!-- </div> -->
+
     </div>
   </div>
 </div>
 
 <!-- User model Start here -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+<!-- <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header" style="background: #f6f9fc;">
 
@@ -94,34 +119,10 @@
         </ul>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <!-- Sign In Form -->
-        <form class="row g-3" id="signinform">
-          <div class="col-12">
-            <label for="inputEmail4" class="form-label fw-bold">Email</label>
-            <input type="email" class="form-control" id="inputEmail4">
-          </div>
-          <div class="col-12">
-            <label for="inputPassword4" class="form-label fw-bold">Password</label>
-            <input type="password" class="form-control" id="inputPassword4">
-          </div>
-          <div class="d-flex justify-content-between">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-              <label class="form-check-label fw-bold" for="inlineCheckbox1">Remember
-                me
-              </label>
-            </div>
-            <div class="form-check form-check-inline frgpswd">
-              <p class="fw-bold">Forgot password?</p>
-            </div>
-          </div>
-          <div class="d-grid gap-2">
-            <button class="btn signin-button text-white" type="button">Sign in</button>
-          </div>
-        </form>
-        <!-- Sign Up Form -->
-        <form class="row g-3" id="signupform">
+      <div class="modal-body"> -->
+<!-- Sign In Form -->
+<!-- Sign Up Form -->
+<!-- <form class="row g-3" id="signupform" action="#" method="post" >
           <div class="col-12">
             <label for="first-name" class="fw-bold">First Name</label>
             <input type="text" class="form-control" aria-label="First name" id="first-name">
@@ -146,13 +147,13 @@
           <div class="d-grid gap-2">
             <button class="btn signin-button text-white" type="button">Sign up</button>
           </div>
-        </form>
-      </div>
+        </form> -->
+<!-- </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- cart model start -->
-<div class="modal fade" id="cart-detail-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="cart-detail-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header" style="background: #f6f9fc;">
@@ -198,7 +199,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- sub nav bar start here -->
 <div class="main-ulist">
   <div class="container-fluid">
@@ -209,37 +210,21 @@
   </div>
   <div class="container-fluid">
     <nav class="nav-bar">
+      
       <ul>
-        <li><a href="#">All Category</i></a>
-          <ul>
-            <li><a href="#">Men's</a></li>
-            <li><a href="#">Women's</a>
-            </li>
-            <li><a href="#">Kid's</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Men's</a></li>
-        <li><a href="#">Women's</a>
-          <ul>
-            <li><a href="#">Jean's</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Kid's</a>
-        </li>
+     
+        {% for Ideal_For in Ideal_For %}
+        <li><a href="/single?idealfor={{Ideal_For.id}}">{{Ideal_For.title}}</a></li>
+        {%endfor%}
       </ul>
     </nav>
   </div>
 </div>
 <!-- sub nav End -->
 
-
-
-
 {%block content%}
 
 {%endblock%}
-
-
 
 <!-- Also Like Section End Here -->
 <!-- footer section start here  -->
@@ -310,10 +295,7 @@
             <p class="subs-theory">Subscribe to our newsletter to receive early discount offers, updates and new
               products info.</p>
           </div>
-          <!-- <div class="footer-name">
-                <h3>Download our app</h3>
-                <img src="img/logo/footerapplogo.png" class="img-fluid footer-img" alt="">
-              </div> -->
+
         </div>
       </div>
     </div>

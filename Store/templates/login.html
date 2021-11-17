@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{%block content%}
+<div class="row justify-content-center">
+    <div class="col-4">
+        <form class="row g-3 border shadow-sm mt-5 mb-5 pt-3 pb-3" id="signinform" action="/accounts/login"
+            method="POST">
+            {% csrf_token %}
+            {{form|crispy}}
+            <div class="d-flex justify-content-end">
+                <div class="form-check form-check-inline frgpswd">
+                    <p class="fw-bold">Forgot password?</p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-around">
+                <input type="submit" class="btn signin-button text-white btn-sm" value="Log In">
+            </div>
+               
+           
+            <!-- <div class="col-12">
+                <label for="inputEmail4" class="form-label fw-bold">Email</label>
+                <input type="email" class="form-control" id="inputEmail4">
+            </div>
+            <div class="col-12">
+                <label for="inputPassword4" class="form-label fw-bold">Password</label>
+                <input type="password" class="form-control" id="inputPassword4">
+            </div>
+            <div class="d-flex justify-content-end">
+                <div class="form-check form-check-inline frgpswd">
+                    <p class="fw-bold">Forgot password?</p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between">
+                <a href="/accounts/register"><button type="button" class="btn signin-button text-white btn-sm">Create An
+                        Account </button></a>
+                <input type="submit" class="btn signin-button text-white btn-sm" value="Log In">
+            </div> -->
+        </form>
+    </div>
+</div>
+{%endblock%}

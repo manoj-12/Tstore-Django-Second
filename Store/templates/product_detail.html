@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+<div class="container mb-2 d-flex justify-content-center">
+    <div class="row col-md-10">
+        <div class="col-md-6 border border-primary">
+            <div class="image_section my-1 mx-3">
+                <picture>
+                    <img src="{% static 'img/product/women/w2.webp' %}" alt="Img-No-show" class="">
+                </picture>
+            </div>
+            <div class="row m-1">
+                <div class="col-md-12">
+                    <div class="multiple_images">
+                        <img src="{% static 'img/product/women/w2.webp' %}" class="img-fluid" alt="" style="width: 80px;">
+                        <img src="{% static 'img/product/women/w2.webp' %}" class="img-fluid" alt="" style="width: 80px;">
+                        <img src="{% static 'img/product/women/w2.webp' %}" class="img-fluid" alt="" style="width: 80px;">
+                        <img src="{% static 'img/product/women/w2.webp' %}" class="img-fluid" alt="" style="width: 80px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 border border-primary">
+            <div class="product_detail_section">
+                <div class="barnd_name">
+                    <p class="fw-bold">Brand Name</p>
+                </div>
+                <div class="Product_name">
+                    <h2 class="fw-bold">Product Name</h2>
+                </div>
+                <div class="Select_Size">
+                    <p class=" fw-bold">Size Name</p>
+                </div>
+                <div class="wishlist_cart d-block d-flex justify-content-between">
+                    <div class="Select_Size border border-primary" style="width: 40%;">
+                        <p class=" fw-bold text-uppercase">Wish List</p>
+                    </div>
+                    <div class="Select_Size border border-primary" style="width: 40%;">
+                        <p class=" fw-bold text-uppercase">Add To Cart</p>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

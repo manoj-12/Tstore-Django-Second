@@ -1,7 +1,7 @@
 from django.contrib import admin
 from Store .models .product import Occasion , \
     Sleeve , NeckType , Brand , \
-    Color , IdealFor  ,Tshirt , SizeVariant
+    Color , IdealFor  ,Tshirt , SizeVariant , slider
 # Register your models here.
 
 
@@ -11,10 +11,12 @@ class SizeVariantConfig(admin. TabularInline): #1.TabularInline 2.StackedInline
 
 class TshirtConfig(admin.ModelAdmin):
     inlines = [SizeVariantConfig] #Where is Apply Inline Method
+    list_display = ['tshirt_name','brand','Ideal_for','occasion','Neck_type','sleeve',
+                    'color']
 
 
-
-
+class SizeVariantAdmin(admin.ModelAdmin):
+    list_display = ['size','price']
 
 
 
@@ -25,4 +27,5 @@ admin.site.register(NeckType)
 admin.site.register(Brand)
 admin.site.register(Color)
 admin.site.register(IdealFor)
-# admin.site.register(SizeVariant)
+admin.site.register(slider)
+# admin.site.register(SizeVariant , SizeVariantAdmin)

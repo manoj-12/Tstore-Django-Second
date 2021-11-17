@@ -1,7 +1,6 @@
 {% extends "base.html" %}
-
+{% load tshirt_tag %}
 {% load static %}
-
 {% block content%}
 
 <!-- owl-carousl -->
@@ -10,10 +9,9 @@
     <div class="row">
       <div class="col-12">
         <div class="owl-carousel owl-theme owl-carousel-1">
-          <div class="item"><img src="{% static 'img/slider/s4.jpg' %}" alt="" class="img-fluid"></div>
-          <div class="item"><img src="{% static 'img/slider/s5.jpg' %}" alt="" class="img-fluid"></div>
-          <div class="item"><img src="{% static 'img/slider/s6.jpg' %}" alt="" class="img-fluid"></div>
-          <div class="item"><img src="{% static 'img/slider/s7.jpg' %}" alt="" class="img-fluid"></div>
+          {%for slider in Slider %}
+          <div class="item"><img src="{{slider.slider.url}}" alt="" class="img-fluid"></div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -47,7 +45,7 @@
 <!-- Top Deal Section End Here -->
 
 <!-- best seller section start here -->
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="row">
     <div class="col-12 d-flex justify-content-center">
       <h4 class="best-saller"> <span class="fw-bold text-uppercase">Best </span> <span
@@ -317,11 +315,11 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- best seller section End here -->
 
 <!-- Biggest Deal start here -->
-<div class="container-fluid dealofday-mainsection my-4 d-flex justify-content-center">
+<!-- <div class="container-fluid dealofday-mainsection my-4 d-flex justify-content-center">
   <div class="row ">
     <div class="col-12 ">
       <div class="dealofday ">
@@ -330,8 +328,8 @@
       </div>
     </div>
   </div>
-</div>
-<div class="container-fluid">
+</div> -->
+<!-- <div class="container-fluid">
   <div class="row">
     <div class="splide">
       <div class="splide__track">
@@ -372,7 +370,7 @@
                   alt=""></a>
             </figure>
           </li>
-          <!-- repeat -->
+        
           <li class="splide__slide">
             <figure class="figure">
               <a href="single.html"> <img class="figure-img img-fluid" src="{% static 'img/biggsetdeal/d7.jpg' %}"
@@ -389,55 +387,57 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- Biggest Deal End here -->
 
 <!-- new arrivals design start here -->
 <div class="container-fluid mt-0">
   <div class="row">
     <div class="col-12 d-flex justify-content-center">
-      <h4 class="best-saller"> <span class="fw-bold text-uppercase">New</span> <span
-          class="text-uppercase">arrivals</span>
+      <h4 class="best-saller"> <span class="fw-bold text-uppercase">OUR</span> <span
+          class="text-uppercase">PRODUCT</span>
       </h4>
     </div>
   </div>
 </div>
 <div class="container">
   <div class="row">
+
+    {% for tshirt in tshirt %}
     <div class="col-6 col-md-3 mt-3">
       <div class="main-arrival-body">
         <div class="main-arrival">
           <div class="lable">
-            <p>20% OFF</p>
+            <p>{{tshirt.discount}}% OFF</p>
           </div>
           <div class="arrival-img">
-            <a href="single.html"> <img src="{% static 'img/newarrival/n1.2.webp' %}" class="img-1 img-fluid"
-                alt=""></a>
-            <a href=""><img src="{% static 'img/newarrival/n1.1.webp' %}" class="img-2 img-fluid" alt=""></a>
+            <!-- <a href="single.html"> <img src="{% static 'img/newarrival/n1.2.webp' %}" class="img-1 img-fluid"
+                alt=""></a> -->
+            <a href="/product_detail"><img src="{{tshirt.tshirt_img.url}}" class="img-2 img-fluid" alt=""></a>
           </div>
           <div class="productname-ratting">
             <div class="prod-name">
-              <p class="text-center fw-bold">product name</p>
+          <p class="text-center fw-bold">{{tshirt.tshirt_name}}</p>
             </div>
             <!-- <div class="price-add-ratting d-flex justify-content-center"> -->
-            <div class="star-ratting text-center rattings">
+            <!-- <div class="star-ratting text-center rattings">
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-half"></i>
               <i class="bi bi-star"></i>
-            </div>
-            <div class=" fw-bold text-center">$1580</div>
-
-            <!-- </div> -->
-          </div>
-          <!-- <div class="lable">
-              <p>20% OFF</p>
             </div> -->
+           
+            <span class=" fw-bold text-center">{%rupee%}{%sale_price tshirt%}</span>
+            <del><span class=" fw-bold text-center">{%rupee%}{%min_price tshirt%}</span></del>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-6 col-md-3 mt-3">
+    {% endfor %}
+
+   
+    <!-- <div class="col-6 col-md-3 mt-3">
       <div class="main-arrival-body">
         <div class="main-arrival">
           <div class="arrival-img">
@@ -449,7 +449,7 @@
             <div class="prod-name">
               <p class="text-center fw-bold">product name</p>
             </div>
-            <!-- <div class="price-add-ratting d-flex justify-content-center"> -->
+           
             <div class="star-ratting text-center">
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
@@ -459,7 +459,7 @@
             </div>
             <div class=" fw-bold text-center">$1580</div>
 
-            <!-- </div> -->
+          
           </div>
         </div>
       </div>
@@ -475,7 +475,7 @@
             <div class="prod-name">
               <p class="text-center fw-bold">product name</p>
             </div>
-            <!-- <div class="price-add-ratting d-flex justify-content-center"> -->
+            
             <div class="star-ratting text-center">
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
@@ -485,7 +485,7 @@
             </div>
             <div class=" fw-bold text-center">$1580</div>
 
-            <!-- </div> -->
+           
           </div>
         </div>
       </div>
@@ -505,7 +505,7 @@
             <div class="prod-name">
               <p class="text-center fw-bold">product name</p>
             </div>
-            <!-- <div class="price-add-ratting d-flex justify-content-center"> -->
+            
             <div class="star-ratting text-center">
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
@@ -515,7 +515,7 @@
             </div>
             <div class=" fw-bold text-center">$1580</div>
 
-            <!-- </div> -->
+          
           </div>
         </div>
       </div>
@@ -533,7 +533,7 @@
             <div class="prod-name">
               <p class="text-center fw-bold">product name</p>
             </div>
-            <!-- <div class="price-add-ratting d-flex justify-content-center"> -->
+         
             <div class="star-ratting text-center">
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
@@ -543,7 +543,7 @@
             </div>
             <div class=" fw-bold text-center">$1580</div>
 
-            <!-- </div> -->
+            
           </div>
         </div>
       </div>
@@ -563,7 +563,7 @@
             <div class="prod-name">
               <p class="text-center fw-bold">product name</p>
             </div>
-            <!-- <div class="price-add-ratting d-flex justify-content-center"> -->
+          
             <div class="star-ratting text-center">
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
@@ -573,7 +573,7 @@
             </div>
             <div class=" fw-bold text-center">$1580</div>
 
-            <!-- </div> -->
+           
           </div>
         </div>
       </div>
@@ -590,7 +590,7 @@
             <div class="prod-name">
               <p class="text-center fw-bold">product name</p>
             </div>
-            <!-- <div class="price-add-ratting d-flex justify-content-center"> -->
+           
             <div class="star-ratting text-center">
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
@@ -600,7 +600,7 @@
             </div>
             <div class=" fw-bold text-center">$1580</div>
 
-            <!-- </div> -->
+            
           </div>
         </div>
       </div>
@@ -617,7 +617,7 @@
             <div class="prod-name">
               <p class="text-center fw-bold">product name</p>
             </div>
-            <!-- <div class="price-add-ratting d-flex justify-content-center"> -->
+           
             <div class="star-ratting text-center">
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
@@ -627,11 +627,11 @@
             </div>
             <div class=" fw-bold text-center">$1580</div>
 
-            <!-- </div> -->
+          
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 <!-- new arrivals design Ends here -->
@@ -640,8 +640,8 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-12 d-flex justify-content-center">
-      <h4 class="best-saller"> <span class="fw-bold text-uppercase">what's </span> <span
-          class="text-uppercase">New</span>
+      <h4 class="best-saller"> <span class="fw-bold text-uppercase">NEW</span> <span
+          class="text-uppercase">ARRIVALS</span>
       </h4>
     </div>
   </div>
@@ -652,12 +652,12 @@
       <div class="item">
         <div class="whatsNewCarousel-main-body">
           <div class="whats-new-body">
-            <!-- <a href="/single.html"> -->
+         
             <figure class="figure">
               <a href="single.html"> <img class="figure-img img-fluid" src="{% static 'img/whatsnew/w1.webp' %}"
                   alt=""></a>
             </figure>
-            <!-- </a> -->
+         
           </div>
           <div class="d-flex justify-content-between">
             <span class="fw-bold">Product Name</span>

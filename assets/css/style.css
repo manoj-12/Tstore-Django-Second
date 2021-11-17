@@ -601,10 +601,10 @@ ul li i {
 .lable {
   -webkit-clip-path: polygon(12% 0, 63% 0, 100% 88%, 0 100%);
           clip-path: polygon(12% 0, 63% 0, 100% 88%, 0 100%);
-  position: relative;
+  position: absolute;
   z-index: 1;
-  top: 4px;
-  left: -13px;
+  /* top: 4px; */
+  /* left: -13px; */
   cursor: pointer;
   -webkit-transform: rotate(-29deg);
           transform: rotate(-29deg);
@@ -614,6 +614,7 @@ ul li i {
   max-height: 25px;
   background-color: #ffb4b5;
   width: 110px;
+  margin: 5px 0px 0px -14px;
 }
 
 .whatsNewCarousel {
@@ -716,7 +717,11 @@ ul li i {
 }
 
 .footer-ul-item dl, ol, ul {
-  margin-left: -2rem;
+ /* display: none; */
+}
+
+.text-muted ul{
+  display: none;
 }
 
 .about-us h3 {
@@ -1036,7 +1041,7 @@ ul li i {
 }
 
 .main-body-prodlist:hover > .prodlist-name p a {
-  color: #fe3437;
+  color: #fe3437ef;
 }
 
 .filter-short-icon {
@@ -1082,5 +1087,23 @@ ul li i {
 .big-img {
   width: 300px;
   height: 300px;
+}
+
+ /* New Design  */
+
+.btn-group .user-name{
+  background-color: #f8f5f5;
+  border-radius: 20px;
+ 
+}
+
+
+.dropdown-toggle::after{
+  display: none;
+}
+
+
+.form-text .text-muted ul{
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */
