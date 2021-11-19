@@ -18,4 +18,12 @@ def sale_price(tshirt):
 
 @register.simple_tag
 def rupee():
-    return f"$"
+    return f"₹"
+
+
+@register.simple_tag()
+def Active_size_button(active_size , size):
+    if active_size == size:
+        return "btn-dark"
+    else:
+        return "btn-light"

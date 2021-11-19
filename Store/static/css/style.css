@@ -1106,4 +1106,82 @@ ul li i {
 .form-text .text-muted ul{
   display: none;
 }
+
+
+
+
+
+/* Product Detail  Design  */
+
+
+.product_price{
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  color: rgb(153, 153, 153);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Mier demi";
+  margin: 0px;
+  padding: 5px;
+  border-radius: 5px 5px 5px 5px;
+  
+  
+}
+
+.Select_Size{
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  color: rgb(51, 51, 51);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  font-family: "Mier bold";
+  margin: 0px;
+  padding: 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+.wishlist_cart{
+
+}
+
+.sale_price{
+  color: rgb(51, 51, 51);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  font-family: "Mier bold";
+  margin: 0px;
+  padding: 0px;
+}
+.min_price{
+  color: rgb(153, 153, 153);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: "Mier book";
+    margin: 0px;
+    padding: 0px;
+}
+.discount{
+  color: rgb(6, 167, 89);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Mier demi";
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.btn-dark{
+  background-color: #fe696a;
+  border: none;
+}
+.btn-dark:hover{
+  background-color: #fe3437;
+}
 /*# sourceMappingURL=style.css.map */

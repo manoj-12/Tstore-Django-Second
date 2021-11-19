@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from Store .models .product import IdealFor ,Tshirt , slider
-
+from math import floor
 def index(request):
     Slider = slider.objects.filter(Show_Slider=True)
     # print('Slider',Slider)
@@ -42,5 +42,27 @@ def singlepage(request):
     return render(request ,'single.html',context=context)
 
 
-def product_detail(request):
-    return render(request,'product_detail.html')
+def product_detail(request,id):
+    # tshirt = Tshirt.objects.filter(id=TshirtID)
+    tshirt = Tshirt.objects.get(id=id)
+    print("Tshirt ID =:",tshirt.id)
+    Size = request.GET.get('size')
+    print("Size =:",Size)
+    if Size is None:
+        size = tshirt.sizevariant_set.all().order_by('price').first()
+    else:
+        size = tshirt.sizevariant_set.get(size=Size)
+    size_price = size.price #price without discount
+    sell_price = size_price - (size_price*(tshirt.discount)/100) #sell Price
+    sell_price = floor(sell_price)
+    print(size.size)
+    print("Price =:",size.price)
+    print("Tshirt Name =:",tshirt.tshirt_name)
+    context = {
+        'tshirt':tshirt,
+        'size_price':size_price,
+        'sell_price':sell_price,
+        'active_size': size
+
+    }
+    return render(request,'product_detail.html', context=context)

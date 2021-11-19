@@ -1,46 +1,66 @@
 {% extends 'base.html'%}
 {% load static %}
+{% load tshirt_tag %}
 {% block content %}
 
 <div class="container mb-2 d-flex justify-content-center">
-    <div class="row col-md-10">
-        <div class="col-md-6 border border-primary">
+    <div class="row col-md-12">
+        <div class="col-md-6 col-sm-12 col-12">
             <div class="image_section my-1 mx-3">
                 <picture>
-                    <img src="{% static 'img/product/women/w2.webp' %}" alt="Img-No-show" class="">
+                    <img src="{{tshirt.tshirt_img.url}}" alt="Img-No-show" class="">
                 </picture>
             </div>
             <div class="row m-1">
                 <div class="col-md-12">
                     <div class="multiple_images">
-                        <img src="{% static 'img/product/women/w2.webp' %}" class="img-fluid" alt="" style="width: 80px;">
-                        <img src="{% static 'img/product/women/w2.webp' %}" class="img-fluid" alt="" style="width: 80px;">
-                        <img src="{% static 'img/product/women/w2.webp' %}" class="img-fluid" alt="" style="width: 80px;">
-                        <img src="{% static 'img/product/women/w2.webp' %}" class="img-fluid" alt="" style="width: 80px;">
+                        <img src="{{tshirt.tshirt_img.url}}" class="img-fluid" alt="" style="width: 80px;">
+                        <img src="{{tshirt.tshirt_img.url}}" class="img-fluid" alt="" style="width: 80px;">
+                        <img src="{{tshirt.tshirt_img.url}}" class="img-fluid" alt="" style="width: 80px;">
+                        <img src="{{tshirt.tshirt_img.url}}" class="img-fluid" alt="" style="width: 80px;">
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 border border-primary">
+        <div class="col-md-6 col-sm-12 col-12">
             <div class="product_detail_section">
-                <div class="barnd_name">
-                    <p class="fw-bold">Brand Name</p>
+                <!-- product name price detail -->
+                <div class="product_price px-4 py-3">
+                    <div class="barnd_name">
+                        <p class="fw-bold">Brand : {{tshirt.brand}}</p>
+                    </div>
+                    <div class="Product_name">
+                        <h5 class="fw-bold">{{tshirt.tshirt_name}}</p>
+                    </div>
+                    <div class="Product-price-dicount">
+                        <span class="sale_price">{%rupee%}{{sell_price}}</span>
+                        <del><span class="min_price">{%rupee%}{{size_price}}</span></del>
+                       <span class="discount">{{tshirt.discount}}%</span>
+                    </div>
                 </div>
-                <div class="Product_name">
-                    <h2 class="fw-bold">Product Name</h2>
+               
+                <!-- size section -->
+                <div class="Select_Size mt-2">
+                    <p class=" fw-bold">Select Size</p>
+                    <div class="row">
+                    {% for size in tshirt.sizevariant_set.all %}
+                        <div class="btn-group col-4 mb-2" role="group" aria-label="Third group">
+                            <a href="/product_detail/{{tshirt.id}}?size={{size.size}}"class="btn {%Active_size_button active_size size%}
+                            fw-bold">{{size.size}}</a>
+                        </div>
+                    {% endfor %}
                 </div>
-                <div class="Select_Size">
-                    <p class=" fw-bold">Size Name</p>
                 </div>
-                <div class="wishlist_cart d-block d-flex justify-content-between">
-                    <div class="Select_Size border border-primary" style="width: 40%;">
+                <!-- add to cart and wish list section  -->
+                <div class="wishlist_cart d-block d-flex justify-content-between mt-2">
+                    <div class="Select_Size" style="width: 40%;">
                         <p class=" fw-bold text-uppercase">Wish List</p>
                     </div>
-                    <div class="Select_Size border border-primary" style="width: 40%;">
+                    <div class="Select_Size" style="width: 40%;">
                         <p class=" fw-bold text-uppercase">Add To Cart</p>
                     </div>
                 </div>
-              
+
             </div>
         </div>
     </div>
