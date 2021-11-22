@@ -1,12 +1,8 @@
-
 from django.db import models
 
 class slider(models.Model):
     slider = models.ImageField(upload_to = 'upload/slider/img', null=False)
     Show_Slider = models.BooleanField(default=True)
-
-
-    
 
 class TshirtProperty(models.Model):
     title = models.CharField(max_length=30, null=False)
@@ -19,33 +15,27 @@ class TshirtProperty(models.Model):
     class Meta:
         abstract = True
 
-
 class Occasion(TshirtProperty):
     pass
-
 
 class IdealFor(TshirtProperty):
     pass
 
-
 class NeckType(TshirtProperty):
     pass
-
 
 class Sleeve(TshirtProperty):
     pass
 
-
 class Brand(TshirtProperty):
     pass
-
 
 class Color(TshirtProperty):
     pass
 
-
 class Tshirt(models.Model):
     tshirt_name = models.CharField(max_length=100, null=False)
+    slug = models.CharField(max_length=200 , null=False , unique=True , default='')
     tshirt_Desc = models.CharField(max_length=100, null=True, blank=True)
     discount = models.IntegerField()
     tshirt_img = models.ImageField(upload_to='upload/img', null=False)
@@ -58,9 +48,6 @@ class Tshirt(models.Model):
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     color = models.ForeignKey(Color, on_delete=models.CASCADE)
     Add_Home_Page = models.BooleanField(default=True)
-
-
-
 
 class SizeVariant(models.Model):
     SIZES = (

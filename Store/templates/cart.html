@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load tshirt_tag %}
+{%block content%}
+
+<div class="container-fluid">
+    <table class="table table-striped table-hover">
+
+        <thead>
+            <tr>
+                <th scope="col">S.no</th>
+                <th scope="col">Tshirt Image</th>
+                <th scope="col">Tshirt Name</th>
+                <th scope="col">Size</th>
+                <th scope="col">Price</th>
+                <th scope="col">Discount</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">After Discount Price</td>
+                <th scope="col">Total</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for cart in cart %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+
+                <td><img src="{{cart.tshirt.tshirt_img.url}}" alt="" class="rounded-circle img-fluid"
+                        style="height: 70px;"></td>
+                <td>{{cart.tshirt.tshirt_name}}</td>
+                <td>{{cart.size}}</td>
+                <td>{% rupee %}{{cart.size.price}}</td>
+                <td>{{cart.tshirt.discount}}%</td>
+                <td>{{cart.Quantity}}</td>
+                <td>{% rupee %}{% clc_sale_price cart.size.price cart.tshirt.discount as sale_price %}{{sale_price}}
+                </td>
+                <td>{% rupee %}{%multiply cart.Quantity sale_price as total%}{{total}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <th colspan="7"></th>
+            <th colspan="">TOTAL :</th>
+            <th colspan="">{% rupee %}{{cart|clc_total_payablr_amount}}</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+{%endblock%}

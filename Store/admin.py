@@ -11,8 +11,8 @@ class SizeVariantConfig(admin. TabularInline): #1.TabularInline 2.StackedInline
 
 class TshirtConfig(admin.ModelAdmin):
     inlines = [SizeVariantConfig] #Where is Apply Inline Method
-    list_display = ['tshirt_name','brand','Ideal_for','occasion','Neck_type','sleeve',
-                    'color']
+    list_display = ['tshirt_name','brand','Ideal_for','occasion','Neck_type','sleeve','color' , 'slug']
+
 
 
 class SizeVariantAdmin(admin.ModelAdmin):
