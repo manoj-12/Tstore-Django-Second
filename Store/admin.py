@@ -1,7 +1,8 @@
 from django.contrib import admin
 from Store .models .product import Occasion , \
     Sleeve , NeckType , Brand , \
-    Color , IdealFor  ,Tshirt , SizeVariant , slider
+    Color , IdealFor  ,Tshirt , SizeVariant , \
+    slider , Cart , Order , OrderItem , Payment
 # Register your models here.
 
 
@@ -28,4 +29,8 @@ admin.site.register(Brand)
 admin.site.register(Color)
 admin.site.register(IdealFor)
 admin.site.register(slider)
-# admin.site.register(SizeVariant , SizeVariantAdmin)
+admin.site.register(Cart)
+admin.site.register(SizeVariant)
+admin.site.register(Order)
+admin.site.register(OrderItem)
+admin.site.register(Payment)

@@ -37,7 +37,10 @@
         <form action="/accounts/register" method="post">
             {% csrf_token %}
             {{form|crispy}}
-            <input type="submit" class="btn signin-button text-white" value="Creat Account">
+            <div class="row m-0">
+                <input type="submit" class="btn signin-button text-white fw-bold col-12" value="Creat Account">
+            </div>
+            
         </form>
     </div>
 </div>

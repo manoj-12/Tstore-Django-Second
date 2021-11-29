@@ -4,6 +4,6 @@ from accounts .views import register , login , LogOut
 
 urlpatterns = [
     path('register', register , name='register'),
-    path('login',login,name='login'),
+    path('login',login , name='login'),
     path('LogOut' , LogOut , name='LogOut')
 ]

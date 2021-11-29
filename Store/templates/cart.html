@@ -3,8 +3,7 @@
 {%block content%}
 
 <div class="container-fluid">
-    <table class="table table-striped table-hover">
-
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th scope="col">S.no</th>
@@ -33,7 +32,7 @@
                 <td>{{cart.Quantity}}</td>
                 <td>{% rupee %}{% clc_sale_price cart.size.price cart.tshirt.discount as sale_price %}{{sale_price}}
                 </td>
-                <td>{% rupee %}{%multiply cart.Quantity sale_price as total%}{{total}}</td>
+                <td>{% rupee %}{% multiply cart.Quantity sale_price as total %}{{total}}</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -44,6 +43,12 @@
             </tr>
         </tfoot>
     </table>
+    <div class="row d-flex justify-content-end">
+        <div class="col-md-2">
+            <a href="/checkout" style="text-decoration-line: none;"><p class="fw-bold btn btn-light">Continue To Check Out</p></a>
+        </div>
+       
+    </div>
 </div>
 
 

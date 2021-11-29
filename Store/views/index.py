@@ -1,8 +1,9 @@
 from django.shortcuts import render , redirect , HttpResponse
-from Store .models .product import IdealFor ,Tshirt , slider , SizeVariant
+from Store .models .product import IdealFor ,Tshirt , slider , SizeVariant , Cart
 from math import floor
 
-
+from django.contrib.auth.decorators import login_required
+from Store .forms .checkout import CheckForm
 
 def index(request):
     cart = request.session.get("cart")
@@ -68,31 +69,7 @@ def product_detail(request,slug):
 
     }
     return render(request,'product_detail.html', context=context)
-
-def addtocart(request , slug ,size):
-    cart = request.session.get('cart') #supposed session in cart
-    if cart is None:
-        cart = []
-    tshirt = Tshirt.objects.get(slug=slug)
-    flag = True
-    for cart_obj in cart:
-        t_id = cart_obj.get('tshirt')
-        temp_size = cart_obj.get('size')
-        if t_id == tshirt.id and temp_size==size:
-            flag = False
-            cart_obj['Quantity'] = cart_obj['Quantity']+1
-
-    if flag:
-        cart_obj = {
-            'tshirt':tshirt.id,
-            'size':size,
-            'Quantity':1
-        }
-        cart.append(cart_obj)
-    request.session['cart']=cart #create session assign the value of cart
-    return_url = request.GET.get("return_url")
-    return redirect(return_url)
-
+'''cart page '''
 def cart(request):
     cart = request.session.get('cart')
     if cart is None:
@@ -108,3 +85,96 @@ def cart(request):
     }
     print(cart)
     return render(request , "cart.html" , context=context)
+'''End cart page '''
+
+'''add to cart manage '''
+def addtocart(request , slug ,size):
+    user = None
+    if request.user.is_authenticated:
+        user = request.user
+    cart = request.session.get('cart') #supposed session in cart
+    if cart is None:
+        cart = []
+    tshirt = Tshirt.objects.get(slug=slug)
+    add_cart_for_anom_user(cart, size , tshirt)
+    '''
+    temp_size = SizeVariant.objects.get(size = size , tshirt = tshirt)
+    flag = True
+    for cart_obj in cart:
+        t_id = cart_obj.get('tshirt')
+        # temp_size = cart_obj.get('size')
+        size_short = cart_obj.get('size')
+        # if t_id == tshirt.id and temp_size==size:
+        if t_id == tshirt.id and size==size_short:
+            flag = False
+            cart_obj['Quantity'] = cart_obj['Quantity']+1
+
+    if flag:
+        cart_obj = {
+            'tshirt': tshirt.id,
+            'size': size,
+            'Quantity': 1
+        }
+        cart.append(cart_obj)
+        '''
+    if user is not None:
+        add_cart_database(user , size , tshirt)
+        '''
+            FOR PRACTICE
+            existing = Cart.objects.filter(user=user , sizeVariant = temp_size )
+            if len(existing) > 0:
+                obj = existing[0]
+                obj.Quantity = obj.Quantity+1
+                obj.save()
+            else:
+                c = Cart()
+                c.user = user
+                c.sizeVariant = temp_size
+                c.Quantity = 1
+                c.save()
+        '''
+    request.session['cart']=cart #create session assign the value of cart
+    return_url = request.GET.get("return_url")
+    return redirect(return_url)
+
+def add_cart_database(user, size , tshirt):
+    size = SizeVariant.objects.get(size=size, tshirt=tshirt)
+    existing = Cart.objects.filter(user=user, sizeVariant=size)
+    if len(existing) > 0:
+        obj = existing[0]
+        obj.Quantity = obj.Quantity + 1
+        obj.save()
+    else:
+        c = Cart()
+        c.user = user
+        c.sizeVariant = size
+        c.Quantity = 1
+        c.save()
+
+def add_cart_for_anom_user(cart , size , tshirt):
+    flag = True
+    for cart_obj in cart:
+        t_id = cart_obj.get('tshirt')
+        # temp_size = cart_obj.get('size')
+        size_short = cart_obj.get('size')
+        # if t_id == tshirt.id and temp_size==size:
+        if t_id == tshirt.id and size == size_short:
+            flag = False
+            cart_obj['Quantity'] = cart_obj['Quantity'] + 1
+
+    if flag:
+        cart_obj = {
+            'tshirt': tshirt.id,
+            'size': size,
+            'Quantity': 1
+        }
+        cart.append(cart_obj)
+
+'''End cart manage '''
+
+@login_required(login_url='/accounts/login')
+def checkout(request):
+    form = CheckForm()
+    return render(request , 'checkout_form.html' , {"checkoutform":form})
+
+
