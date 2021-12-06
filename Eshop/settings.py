@@ -119,6 +119,9 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR , 'assets')
 MEDIA_ROOT = BASE_DIR
 
+API_KEY = 'test_2ec9d246c3ee72e458735c38c37'
+AUTH_TOKEN = 'test_93ecde728502423f2ff9192b563'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

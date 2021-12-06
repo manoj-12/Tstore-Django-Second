@@ -19,7 +19,8 @@ class TshirtConfig(admin.ModelAdmin):
 class SizeVariantAdmin(admin.ModelAdmin):
     list_display = ['size','price']
 
-
+class OrderItemAdmin(admin.ModelAdmin):
+    list_display = ['tshirt','size','quantity','price']
 
 admin.site.register(Tshirt , TshirtConfig) #pass class
 admin.site.register(Occasion)
@@ -32,5 +33,5 @@ admin.site.register(slider)
 admin.site.register(Cart)
 admin.site.register(SizeVariant)
 admin.site.register(Order)
-admin.site.register(OrderItem)
+admin.site.register(OrderItem , OrderItemAdmin)
 admin.site.register(Payment)

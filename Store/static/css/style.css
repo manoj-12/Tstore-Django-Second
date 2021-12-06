@@ -18,6 +18,7 @@ input[type="search"]::-webkit-search-results-decoration {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  
   z-index: 3;
   -webkit-box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
           box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
@@ -27,6 +28,7 @@ input[type="search"]::-webkit-search-results-decoration {
   .main-section-nav {
     -webkit-box-shadow: none;
             box-shadow: none;
+            
   }
 }
 
@@ -1218,4 +1220,6 @@ ul li i {
 .requiredField{
   font-weight: bold;
 }
+
+
 /*# sourceMappingURL=style.css.map */

@@ -32,8 +32,8 @@
 <div class="container-fluid main-section-nav">
   <nav class="navbar navbar-expand-lg navbar-light middle-nav">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/"><img src="{% static 'img/logo.png' %}" alt="" class="img-fluid logo"></a>
-      <a href="/"><img src="{% static 'img/small-logo.png' %}" class="img-fluid small-logo" alt=""></a>
+      <a class="navbar-brand" href="/"><img src="{% static 'img/logo/logo.png' %}" alt="" class="img-fluid logo"></a>
+      <a href="/"><img src="{% static 'img/logo/small-logo.png' %}" class="img-fluid small-logo" alt=""></a>
       <!-- <div class="d-flex person-info"> -->
       <!-- wish list  section -->
       <!-- <div class="wish-list">
@@ -84,7 +84,7 @@
           <button type="button" class="user-name btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static"
             aria-expanded="false">{{request.user.first_name.0}}</button>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-            <li><a class="dropdown-item" href="#">Order</a></li>
+            <li><a class="dropdown-item" href="/order">Order</a></li>
             <li><a class="dropdown-item" href="/accounts/LogOut">Log Out</a></li>
           </ul>
         </div>
@@ -221,12 +221,7 @@
   <div class="container-fluid">
     <nav class="nav-bar">
       
-      <ul>
-     
-        {% for Ideal_For in Ideal_For %}
-        <li><a href="/single?idealfor={{Ideal_For.id}}">{{Ideal_For.title}}</a></li>
-        {%endfor%}
-      </ul>
+
     </nav>
   </div>
 </div>

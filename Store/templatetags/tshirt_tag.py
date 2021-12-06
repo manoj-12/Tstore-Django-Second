@@ -5,7 +5,7 @@ register = template.Library()
 
 
 @register.filter
-def clc_total_payablr_amount(cart):
+def clc_total_payable_amount(cart):
     total = 0
     for c in cart:
         dicount = c.get('tshirt').discount
@@ -14,6 +14,10 @@ def clc_total_payablr_amount(cart):
         total_of_single_product = sale_price * c.get('Quantity')
         total = total + total_of_single_product
     return total
+
+
+
+
 @register.simple_tag
 def min_price(tshirt):
     size = tshirt.sizevariant_set.all().order_by('price').first() #return min size
@@ -46,3 +50,10 @@ def Active_size_button(active_size , size):
         return "btn-dark"
     else:
         return "btn-light"
+
+
+
+
+
+
+

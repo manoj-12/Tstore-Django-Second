@@ -1,8 +1,46 @@
 {% extends 'base.html'%}
 {% load crispy_forms_tags %}
+{% load tshirt_tag %}
 {% block content %}
-
-<form action="">
-    {{checkoutform|crispy}}
-</form>
+<div class="container mb-3">
+  <div class="row">
+    <div class="col-md-6">
+      <form action="" method="post">
+        {% csrf_token %}
+        {{checkoutform|crispy}}
+        <div class="container-fluid p-2">
+          <div class="row">
+            <input type="submit" class="btn signin-button text-white btn-sm text-uppercase fw-bold" value="Check Out">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tshirt</th>
+            <th scope="col">Size</th>
+            <th scope="col">Price After Disc.</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for c in cart %}
+          <tr>
+            <th scope="row">{{forloop.counter}} .</th>
+            <td class="fw-bold">{{c.size.tshirt.tshirt_name}}</td>
+            <td class="fw-bold">{{c.size.size}}</td>
+            <td class="fw-bold">{%rupee%}{% clc_sale_price c.size.price c.size.tshirt.discount %}</td>
+          </tr>
+          {% endfor %}
+          <tr colspan="">
+            <td colspan='3' class="fw-bold">Total Payable Amount :</td>
+            <td class="fw-bold">{%rupee%}{{cart|clc_total_payable_amount}}.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 {% endblock %}

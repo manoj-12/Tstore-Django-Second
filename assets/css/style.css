@@ -18,6 +18,7 @@ input[type="search"]::-webkit-search-results-decoration {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  
   z-index: 3;
   -webkit-box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
           box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
@@ -27,6 +28,7 @@ input[type="search"]::-webkit-search-results-decoration {
   .main-section-nav {
     -webkit-box-shadow: none;
             box-shadow: none;
+            
   }
 }
 
@@ -1106,4 +1108,118 @@ ul li i {
 .form-text .text-muted ul{
   display: none;
 }
+
+
+
+
+
+/* Product Detail  Design  */
+
+
+.product_price{
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  color: rgb(153, 153, 153);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Mier demi";
+  margin: 0px;
+  padding: 5px;
+  border-radius: 5px 5px 5px 5px;
+  
+  
+}
+
+.Select_Size{
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  color: rgb(51, 51, 51);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  font-family: "Mier bold";
+  margin: 0px;
+  padding: 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.sale_price{
+  color: rgb(51, 51, 51);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  font-family: "Mier bold";
+  margin: 0px;
+  padding: 0px;
+}
+.min_price{
+  color: rgb(153, 153, 153);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  font-family: "Mier book";
+  margin: 0px;
+  padding: 0px;
+}
+.discount{
+  color: rgb(6, 167, 89);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Mier demi";
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.btn-dark{
+  background-color: #fe696a;
+  border: none;
+}
+.btn-dark:hover{
+  background-color: #fe3437;
+}
+
+
+.wishlist, .addtocart{
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  color: rgb(51, 51, 51);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  font-family: "Mier bold";
+  margin: 0px;
+  padding: 5px;
+  border-radius: 5px 5px 5px 5px;
+  width: 40%;
+ display: flex;
+ justify-content: center;
+ cursor: pointer;
+} 
+
+.addtocart a, .wishlist a{
+  text-decoration: none;
+  color: rgb(51, 51, 51);
+}
+
+/* cart_item_count */
+
+
+
+.cart-count{
+  position: absolute;
+}
+
+
+
+.requiredField{
+  font-weight: bold;
+}
+
+
 /*# sourceMappingURL=style.css.map */

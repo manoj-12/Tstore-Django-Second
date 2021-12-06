@@ -16,7 +16,7 @@ class TshirtProperty(models.Model):
     class Meta:
         abstract = True
 
-class Occasion(TshirtProperty):
+class Occasion(TshirtProperty):  
     pass
 
 class IdealFor(TshirtProperty):
@@ -48,7 +48,8 @@ class Tshirt(models.Model):
     sleeve = models.ForeignKey(Sleeve, on_delete=models.CASCADE)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     color = models.ForeignKey(Color, on_delete=models.CASCADE)
-    Add_Home_Page = models.BooleanField(default=True)
+    def __str__(self):
+        return self.tshirt_name
 
 class SizeVariant(models.Model):
     SIZES = (
@@ -85,9 +86,15 @@ class Order(models.Model):
     order_status = models.CharField(max_length=30, choices=OrderStatus)
     payment_method = models.CharField(max_length=30, choices=method)
     shipping_address = models.CharField(max_length=60 , null=False)
+    phone = models.CharField(max_length=10, null=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     total = models.IntegerField(null=False)
     date = models.DateTimeField(null=False , auto_now_add=True)
+
+
+
+
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order , on_delete=models.CASCADE)
@@ -96,6 +103,7 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(null=False)
     price = models.IntegerField(null=False)
     date = models.DateTimeField(null=False, auto_now_add=True)
+
 
 class Payment(models.Model):
     order = models.ForeignKey(Order , on_delete=models.CASCADE)

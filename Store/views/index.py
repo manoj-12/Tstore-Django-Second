@@ -1,16 +1,29 @@
 from django.shortcuts import render , redirect , HttpResponse
-from Store .models .product import IdealFor ,Tshirt , slider , SizeVariant , Cart
+from Store .models .product import  Order ,Tshirt , OrderItem , Payment ,slider , SizeVariant , \
+    Cart , Occasion ,Color , IdealFor , Sleeve , NeckType , Brand
 from math import floor
-
 from django.contrib.auth.decorators import login_required
 from Store .forms .checkout import CheckForm
+from instamojo_wrapper import Instamojo
+from Eshop .settings import API_KEY , AUTH_TOKEN
+API = Instamojo(api_key=API_KEY, auth_token=AUTH_TOKEN, endpoint='https://test.instamojo.com/api/1.1/');
+
 
 def index(request):
-    cart = request.session.get("cart")
-    print(cart)
+    data = request.GET
+    Brands = data.get('brand')
+    occation = Occasion.objects.all()
+    brand = Brand.objects.all()
+    color = Color.objects.all()
+    idealfor = IdealFor.objects.all()
+    sleeve = Sleeve.objects.all()
+    necktype = NeckType.objects.all()
+    
+
+    
     Slider = slider.objects.filter(Show_Slider=True)
     # print('Slider',Slider)
-    tshirt = Tshirt.objects.filter(Add_Home_Page=True).order_by("-id")
+    tshirt = Tshirt.objects.filter(brand__slug=Brands)
     # for t in tshirt:
     #     min_price = t.sizevariant_set.all().order_by('price').first()
     #     print('Min Size = ',min_price) #found Min Size
@@ -24,26 +37,21 @@ def index(request):
        
          
 
-    Ideal_For = IdealFor.objects.all()
+
     context = {
-        'Ideal_For':Ideal_For,
+       
+        'occation':occation,
+        'brand':brand,
+        'color':color,
+        'idealfor':idealfor,
+        'sleeve':sleeve,
+        'necktype':necktype,
         'tshirt':tshirt,
-        'Slider':Slider
+        'Slider':Slider,
     }
 
     return render(request , 'index.html' , context=context)
 
-def singlepage(request):
-    Ideal_for = IdealFor.objects.all()
-    idea_for_id= request.GET.get("idealfor")
-    # print(idea_for_id)
-    tshirt = Tshirt.objects.filter(Ideal_for=idea_for_id)
-    # print('Ideal For ',Ideal_For)
-    context = {
-        'Ideal_For':Ideal_for,
-        'tshirt':tshirt
-    }
-    return render(request ,'single.html',context=context)
 
 def product_detail(request,slug):
     # tshirt = Tshirt.objects.filter(id=TshirtID)
@@ -77,13 +85,13 @@ def cart(request):
     for c in cart:
         tshirt_id = c.get('tshirt')
         tshirt = Tshirt.objects.get(id=tshirt_id)
-        print(tshirt.tshirt_name)
+        # print(tshirt.tshirt_name)
         c['size'] = SizeVariant.objects.get(tshirt=tshirt_id,size=c['size'])
         c['tshirt'] = tshirt
     context = {
         'cart':cart
     }
-    print(cart)
+    # print(cart)
     return render(request , "cart.html" , context=context)
 '''End cart page '''
 
@@ -172,9 +180,140 @@ def add_cart_for_anom_user(cart , size , tshirt):
 
 '''End cart manage '''
 
+
+def clc_total_payable_amount(cart):
+    total = 0
+    for c in cart:
+        dicount = c.get('tshirt').discount
+        price = c.get('size').price
+        sale_price = floor(price - (price*dicount/100))
+        total_of_single_product = sale_price * c.get('Quantity')
+        total = total + total_of_single_product
+    return total
+
+
+@login_required(login_url='/accounts/login')
+def order(request):
+    user = request.user
+    order = Order.objects.filter(user=user).order_by('-date').exclude(order_status='PENDING')
+    print(order)
+    context = {
+        "order":order
+    }
+    return render(request , 'order.html' , context=context)
+
 @login_required(login_url='/accounts/login')
 def checkout(request):
-    form = CheckForm()
-    return render(request , 'checkout_form.html' , {"checkoutform":form})
+    #Get Requst  Handle 
+    if request.method == 'GET':
+        form = CheckForm()
+        cart = request.session.get('cart')
+        if cart is None:
+            cart = []
+        for c in cart:
+            size_str = c.get('size')
+            tshirt_id = c.get('tshirt')
+            size_obj = SizeVariant.objects.get(size=size_str ,tshirt=tshirt_id)
+            c['size']=size_obj
+            c['tshirt']=size_obj.tshirt 
+            context = {
+                "checkoutform":form,
+                "cart":cart 
+            }
+        # print(cart)    
+        return render(request , 'checkout_form.html' , context=context)
+   
+    else:
+        #post request handle 
+        form = CheckForm(request.POST)
+        user = None
+        if request.user.is_authenticated:
+            user = request.user
+            print("user = :",user)
+        if form.is_valid():
+            cart = request.session.get('cart')
+            if cart is None:
+                cart = []
+            for c in cart:
+                size_str = c.get('size')
+                tshirt_id = c.get('tshirt')
+                size_obj = SizeVariant.objects.get(size=size_str ,tshirt=tshirt_id)
+                c['size']=size_obj
+                c['tshirt']=size_obj.tshirt 
+            shipping_add = form.cleaned_data.get('shipping_address')
+            phone = form.cleaned_data.get('phone')
+            payment_method = form.cleaned_data.get('payment_method')
+            total = clc_total_payable_amount(cart)
+            order = Order()
+            order.shipping_address = shipping_add
+            order.phone = phone
+            order.payment_method = payment_method
+            order.total = total
+            order.order_status = "PENDING"
+            order.user = user
+            order.save()
+            # Saving OrderItem
+            for c in cart:
+                order_item = OrderItem()
+                order_item.order = order
+                size = c.get('size')
+                tshirt = c.get('tshirt')
+                order_item.price = floor(size.price-(size.price*tshirt.discount/100))
+                order_item.quantity = c.get('Quantity')
+                order_item.size = size
+                order_item.tshirt = tshirt
+                order_item.save()
+            # print("Order Id =:",order.id)
+
+            # Creating Payment
+            response = API.payment_request_create(
+            amount=order.total,
+            purpose='Payment For Tshirt',
+            send_email=True,
+            buyer_name=f'{user.first_name} {user.last_name}',
+            email=user.email,   
+            redirect_url="http://localhost:8000/validate_payment"
+            )
+            print(response['payment_request'])
+            payment_request_id=response['payment_request']['id']
+            url=response['payment_request']['longurl']
+
+            payment = Payment()
+            payment.order = order
+            payment.payment_request_id = payment_request_id
+            payment.save()
+            print(shipping_add , phone, payment_method , total)
+            return redirect(url)
+        else:
+            return redirect('/checkout')
 
 
+def validate_payment(request):
+    user = None
+    if request.user.is_authenticated:
+        user = request.user
+    payment_request_id = request.GET.get('payment_request_id')
+    payment_id = request.GET.get('payment_id')
+    print('patment Request Id =:',payment_request_id , "payment id =:", payment_id)
+    response = API.payment_request_payment_status(payment_request_id,payment_id)
+    status = response.get('payment_request').get('payment').get('status') # Payment status 
+    print(status)   
+
+    if status != 'Failed':
+        try:
+            payment = Payment.objects.get(payment_request_id=payment_request_id)
+            payment.payment_id = payment_id
+            payment.payment_status = status  
+            payment.save()
+
+            order = payment.order
+            order.order_status = 'PLACED'
+            order.save()
+
+            cart = []
+            request.session['cart']=cart
+            Cart.objects.filter(user=user).delete()
+            return redirect("order")
+        except:
+            return render(request ,  'payment_failed.html')
+    return render(request ,  'payment_failed.html')

@@ -7,4 +7,4 @@ from django.contrib.auth.models import User
 class CheckForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ['shipping_address' , ]
+        fields = ['shipping_address', 'phone' , 'payment_method']
