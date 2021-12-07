@@ -12,18 +12,40 @@ API = Instamojo(api_key=API_KEY, auth_token=AUTH_TOKEN, endpoint='https://test.i
 def index(request):
     data = request.GET
     Brands = data.get('brand')
+    Occations = data.get('occation')
+    Idealfor = data.get('idealfor')
+    sleeves = data.get('sleeve')
+    necktypes = data.get('necktype')
+    colors = data.get('color')
+
+
     occation = Occasion.objects.all()
     brand = Brand.objects.all()
     color = Color.objects.all()
     idealfor = IdealFor.objects.all()
     sleeve = Sleeve.objects.all()
     necktype = NeckType.objects.all()
-    
+    tshirt = Tshirt.objects.all()
+    if Brands !="" and Brands != None:
+        # print("Brands =:",Brands)
+        tshirt = tshirt.filter(brand__slug=Brands)
+    if Occations !='' and Occations != None:
+        tshirt = tshirt.filter(occasion__slug=Occations)
+    if  Idealfor !='' and Idealfor != None:
+        tshirt = tshirt.filter(Ideal_for__slug=Idealfor)
+    if  sleeves !='' and sleeves != None:
+        tshirt = tshirt.filter(sleeve__slug=sleeves)
+    if necktypes != '' and necktypes != None:
+        tshirt = tshirt.filter(Neck_type__slug=necktypes)
+    if colors != '' and colors != None:
+        tshirt = tshirt.filter(color__slug=colors)
 
     
+
+
     Slider = slider.objects.filter(Show_Slider=True)
     # print('Slider',Slider)
-    tshirt = Tshirt.objects.filter(brand__slug=Brands)
+    
     # for t in tshirt:
     #     min_price = t.sizevariant_set.all().order_by('price').first()
     #     print('Min Size = ',min_price) #found Min Size
@@ -39,7 +61,6 @@ def index(request):
 
 
     context = {
-       
         'occation':occation,
         'brand':brand,
         'color':color,

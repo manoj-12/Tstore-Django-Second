@@ -44,7 +44,7 @@ def rupee():
     return f"₹"
 
 
-@register.simple_tag()
+@register.simple_tag
 def Active_size_button(active_size , size):
     if active_size == size:
         return "btn-dark"
@@ -53,7 +53,11 @@ def Active_size_button(active_size , size):
 
 
 
-
-
+@register.simple_tag
+def selected_attr(request_slug , slug):
+    if (request_slug == slug):
+        return 'selected'
+    else:
+        return ''
 
 

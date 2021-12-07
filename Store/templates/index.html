@@ -32,7 +32,9 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3">
-      <h1>Filter</h1>
+     <div class="">
+       <span>Filter</span> <a href="/" class="text-decoration-none"><span>Clear Filter</span></a>
+     </div>
       <!-- Brand -->
       <form id='filterform' action="/">
         <div class="filter">
@@ -40,15 +42,15 @@
           <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="brand" aria-label=".form-select-sm example">
             <option value="">Select Brand</option>
             {% for brands in brand %}
-            <option value="{{brands.slug}}">{{brands.title}}</option>
+            <option {% selected_attr request.GET.brand brands.slug %} value="{{brands.slug}}">{{brands.title}}</option>
             {% endfor %}
           </select>
           <!-- occation -->
           <label for="necktype ms-2" class="fw-bold">Occation</label>
           <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="occation" aria-label=".form-select-sm example">
-            <option value="">Select Occation</option>
+            <option  value="">Select Occation</option>
             {% for occations in occation %}
-            <option value="{{occations.slug}}">{{occations.title}}</option>
+            <option {% selected_attr request.GET.occation occations.slug %} value="{{occations.slug}}">{{occations.title}}</option>
             {% endfor %}
           </select>
           <!-- idealfor -->
@@ -56,7 +58,7 @@
           <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="idealfor" aria-label=".form-select-sm example">
             <option value="">Select Ideal For</option>
             {% for idealfors in idealfor %}
-            <option value="{{idealfors.slug}}">{{idealfors.title}}</option>
+            <option {% selected_attr request.GET.idealfor idealfors.slug %} value="{{idealfors.slug}}">{{idealfors.title}}</option>
             {% endfor %}
           </select>
           <!-- sleeve -->
@@ -64,7 +66,7 @@
           <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="sleeve" aria-label=".form-select-sm example">
             <option value="">Select Sleeve</option>
             {% for sleeves in sleeve %}
-            <option value="{{sleeves.slug}}">{{sleeves.title}}</option>
+            <option {% selected_attr request.GET.sleeve sleeves.slug %} value="{{sleeves.slug}}">{{sleeves.title}}</option>
             {% endfor %}
           </select>
           <!-- necktype -->
@@ -72,7 +74,7 @@
           <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="necktype" id="necktype" aria-label=".form-select-sm example">
             <option value="">Select Necktype</option>
             {% for necktypes in necktype %}
-            <option value="{{necktypes.slug}}">{{necktypes.title}}</option>
+            <option {% selected_attr request.GET.necktype necktypes.slug %} value="{{necktypes.slug}}">{{necktypes.title}}</option>
             {% endfor %}
           </select>
           <!-- color -->
@@ -80,7 +82,9 @@
           <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="color" aria-label=".form-select-sm example">
             <option value="">Select Color</option>
             {% for colors in color %}
-            <option value="{{colors.slug}}">{{colors.title}}</option>
+            <option {% selected_attr request.GET.color colors.slug %}
+             value="{{colors.slug}}">{{colors.title}}
+            </option>
             {% endfor %}
           </select>
         </div>
