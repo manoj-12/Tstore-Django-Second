@@ -7,18 +7,25 @@ from Store .forms .checkout import CheckForm
 from instamojo_wrapper import Instamojo
 from Eshop .settings import API_KEY , AUTH_TOKEN
 API = Instamojo(api_key=API_KEY, auth_token=AUTH_TOKEN, endpoint='https://test.instamojo.com/api/1.1/');
+from django.core.paginator import Paginator
+from urllib .parse import urlencode
 
 
 def index(request):
+    Slider = slider.objects.filter(Show_Slider=True)
+
     data = request.GET
+    page = data.get('page')
+
+    if page is None or page == '':
+        page = 1
+
     Brands = data.get('brand')
     Occations = data.get('occation')
     Idealfor = data.get('idealfor')
     sleeves = data.get('sleeve')
     necktypes = data.get('necktype')
     colors = data.get('color')
-
-
     occation = Occasion.objects.all()
     brand = Brand.objects.all()
     color = Color.objects.all()
@@ -26,6 +33,7 @@ def index(request):
     sleeve = Sleeve.objects.all()
     necktype = NeckType.objects.all()
     tshirt = Tshirt.objects.all()
+
     if Brands !="" and Brands != None:
         # print("Brands =:",Brands)
         tshirt = tshirt.filter(brand__slug=Brands)
@@ -40,10 +48,16 @@ def index(request):
     if colors != '' and colors != None:
         tshirt = tshirt.filter(color__slug=colors)
 
-    
+
+    paginator = Paginator(tshirt , 4)
+    page_obj = paginator.get_page(page)
+
+    data = request.GET.copy()
+    data['page']=''
+    pageurl = urlencode(data)
 
 
-    Slider = slider.objects.filter(Show_Slider=True)
+
     # print('Slider',Slider)
     
     # for t in tshirt:
@@ -67,8 +81,9 @@ def index(request):
         'idealfor':idealfor,
         'sleeve':sleeve,
         'necktype':necktype,
-        'tshirt':tshirt,
+        'page_obj':page_obj,
         'Slider':Slider,
+        'pageurl':pageurl
     }
 
     return render(request , 'index.html' , context=context)

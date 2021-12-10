@@ -32,58 +32,67 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3">
-     <div class="">
-       <span>Filter</span> <a href="/" class="text-decoration-none"><span>Clear Filter</span></a>
-     </div>
+      <div class="">
+        <span>Filter</span> <a href="/" class="t   ext-decoration-none"><span>Clear Filter</span></a>
+      </div>
       <!-- Brand -->
       <form id='filterform' action="/">
         <div class="filter">
-          <label for="necktype ms-2" class="fw-bold">Brand</label>
-          <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="brand" aria-label=".form-select-sm example">
+          <label for="necktype" class="fw-bold">Brand</label>
+          <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="brand"
+            aria-label=".form-select-sm example">
             <option value="">Select Brand</option>
             {% for brands in brand %}
             <option {% selected_attr request.GET.brand brands.slug %} value="{{brands.slug}}">{{brands.title}}</option>
             {% endfor %}
           </select>
           <!-- occation -->
-          <label for="necktype ms-2" class="fw-bold">Occation</label>
-          <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="occation" aria-label=".form-select-sm example">
-            <option  value="">Select Occation</option>
+          <label for="necktype" class="fw-bold">Occation</label>
+          <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="occation"
+            aria-label=".form-select-sm example">
+            <option value="">Select Occation</option>
             {% for occations in occation %}
-            <option {% selected_attr request.GET.occation occations.slug %} value="{{occations.slug}}">{{occations.title}}</option>
+            <option {% selected_attr request.GET.occation occations.slug %} value="{{occations.slug}}">
+              {{occations.title}}</option>
             {% endfor %}
           </select>
           <!-- idealfor -->
-          <label for="necktype ms-2 " class="fw-bold">Ideal For</label>
-          <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="idealfor" aria-label=".form-select-sm example">
+          <label for="necktype" class="fw-bold">Ideal For</label>
+          <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="idealfor"
+            aria-label=".form-select-sm example">
             <option value="">Select Ideal For</option>
             {% for idealfors in idealfor %}
-            <option {% selected_attr request.GET.idealfor idealfors.slug %} value="{{idealfors.slug}}">{{idealfors.title}}</option>
+            <option {% selected_attr request.GET.idealfor idealfors.slug %} value="{{idealfors.slug}}">
+              {{idealfors.title}}</option>
             {% endfor %}
           </select>
           <!-- sleeve -->
-          <label for="necktype ms-2" class="fw-bold">Sleeve</label>
-          <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="sleeve" aria-label=".form-select-sm example">
+          <label for="necktype" class="fw-bold">Sleeve</label>
+          <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="sleeve"
+            aria-label=".form-select-sm example">
             <option value="">Select Sleeve</option>
             {% for sleeves in sleeve %}
-            <option {% selected_attr request.GET.sleeve sleeves.slug %} value="{{sleeves.slug}}">{{sleeves.title}}</option>
+            <option {% selected_attr request.GET.sleeve sleeves.slug %} value="{{sleeves.slug}}">{{sleeves.title}}
+            </option>
             {% endfor %}
           </select>
           <!-- necktype -->
-          <label for="necktype ms-2" class="fw-bold">Neck Type</label>
-          <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="necktype" id="necktype" aria-label=".form-select-sm example">
+          <label for="necktype" class="fw-bold">Neck Type</label>
+          <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="necktype" id="necktype"
+            aria-label=".form-select-sm example">
             <option value="">Select Necktype</option>
             {% for necktypes in necktype %}
-            <option {% selected_attr request.GET.necktype necktypes.slug %} value="{{necktypes.slug}}">{{necktypes.title}}</option>
+            <option {% selected_attr request.GET.necktype necktypes.slug %} value="{{necktypes.slug}}">
+              {{necktypes.title}}</option>
             {% endfor %}
           </select>
           <!-- color -->
-          <label for="necktype ms-2" class="fw-bold">Color</label>
-          <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="color" aria-label=".form-select-sm example">
+          <label for="necktype" class="fw-bold">Color</label>
+          <select onchange="SubmitForm()" class="form-select form-select-sm fw-bold" name="color"
+            aria-label=".form-select-sm example">
             <option value="">Select Color</option>
             {% for colors in color %}
-            <option {% selected_attr request.GET.color colors.slug %}
-             value="{{colors.slug}}">{{colors.title}}
+            <option {% selected_attr request.GET.color colors.slug %} value="{{colors.slug}}">{{colors.title}}
             </option>
             {% endfor %}
           </select>
@@ -94,9 +103,9 @@
     <!-- End filter  -->
     <div class="col-md-9">
       <div class="row">
-      
-        {% for tshirt in tshirt %}
-       
+
+        {% for tshirt in page_obj %}
+
         <div class="col-6 col-md-3 mt-3">
           <div class="main-arrival-body">
             <div class="main-arrival">
@@ -118,16 +127,36 @@
             </div>
           </div>
         </div>
-       
+
         {% endfor %}
-        
+
       </div>
     </div>
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?{{pageurl}}1">&laquo; first</a></li>
+        <a class="page-link" href="?{{pageurl}}{{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <li class="page-item">
+          <a class="page-link" href=""> Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</a>
+        </li>
+
+        {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?{{pageurl}}{{ page_obj.next_page_number }}">next</a></li>
+        <li class="page-item"><a class="page-link" href="?{{pageurl}}{{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
+        {% endif %}
+
+      </ul>
+    </nav>
+
   </div>
+
 </div>
 
 <script>
-  function SubmitForm(){
+  function SubmitForm() {
     document.getElementById('filterform').submit()
   }
 </script>

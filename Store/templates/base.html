@@ -34,38 +34,7 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="/"><img src="{% static 'img/logo/logo.png' %}" alt="" class="img-fluid logo"></a>
       <a href="/"><img src="{% static 'img/logo/small-logo.png' %}" class="img-fluid small-logo" alt=""></a>
-      <!-- <div class="d-flex person-info"> -->
-      <!-- wish list  section -->
-      <!-- <div class="wish-list">
-          <i class="bi bi-suit-heart" data-bs-toggle="tooltip" data-bs-placement="top" title="wish list"></i>
-        </div> -->
-      <!-- wish list section end -->
 
-      <!-- user section -->
-      <!-- <div class="user-model-box" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          <i class="bi bi-person user-icons"></i> <span class="singin-text">Hello, Sing In</span> <span
-            class="account-name">My Account</span>
-        </div> -->
-      <!-- </button> -->
-      <!-- Modal -->
-
-      <!-- user section end -->
-
-      <!-- cart section -->
-      <!-- <div class="cart-detail" data-bs-toggle="modal" data-bs-target="#cart-detail-model">
-          <div class="cart-info">
-            <i class="bi bi-cart3"></i>
-            <span class="position-absolute start-1 translate-middle badge rounded-pill bg-danger" style="margin: 0px 0px 0px -5px;
-                        font-size: 12px;">
-              <small>4</small>
-            </span>
-            <span class="mycart-text">My Cart
-            </span>
-            <span class="price">$125.00</span>
-          </div>
-        </div> -->
-      <!-- cart section end -->
-      <!-- </div> -->
       <ul class="list-group list-group-horizontal">
         <!-- <a href="/cart"><li class="list-group-item">
           <i class="bi bi-bag-check-fill">9</i>
@@ -93,20 +62,16 @@
         <a href="/accounts/register">
           <li class="list-group-item">Sign Up</li>
         </a>
-
         <a href="/accounts/login">
           <li class="list-group-item">Login</li>
         </a>
-
         {% endif %}
       </ul>
-  
     </div>
   </nav>
   <!-- search Section -->
   <div class="container">
     <div class="row d-flex">
-    
       <form class="search-form">
         <input class="form-control fw-bold" type="" placeholder="Search for product" aria-label="Search">
         <button class="btn search-icon seaarch-icon-2" type="submit"><i class="bi bi-search "></i></button>
@@ -115,101 +80,6 @@
     </div>
   </div>
 </div>
-
-<!-- User model Start here -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
-<!-- <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header" style="background: #f6f9fc;">
-
-        <ul class="list-group list-group-horizontal">
-          <li class="list-group-item item-first fw-bold" id="signin"><i class="bi bi-lock"></i> Sign in</li>
-          <li class="list-group-item item-second fw-bold signUp"><i class="bi bi-person"></i>
-            Sign up</li>
-        </ul>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body"> -->
-<!-- Sign In Form -->
-<!-- Sign Up Form -->
-<!-- <form class="row g-3" id="signupform" action="#" method="post" >
-          <div class="col-12">
-            <label for="first-name" class="fw-bold">First Name</label>
-            <input type="text" class="form-control" aria-label="First name" id="first-name">
-          </div>
-          <div class="col-12">
-            <label for="last-name" class="fw-bold">Last Name</label>
-            <input type="text" class="form-control" aria-label="Last name" id="last-name">
-          </div>
-
-          <div class="col-12">
-            <label for="email" class="fw-bold">E-mail</label>
-            <input type="email" class="form-control" id="email">
-          </div>
-          <div class="col-12">
-            <label for="password" class="fw-bold">Password</label>
-            <input type="password" class="form-control" id="password">
-          </div>
-          <div class="col-12">
-            <label for="confirm-password" class="fw-bold">Confirm-Password</label>
-            <input type="password" class="form-control" id="confirm-password">
-          </div>
-          <div class="d-grid gap-2">
-            <button class="btn signin-button text-white" type="button">Sign up</button>
-          </div>
-        </form> -->
-<!-- </div>
-    </div>
-  </div>
-</div> -->
-<!-- cart model start -->
-<!-- <div class="modal fade" id="cart-detail-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header" style="background: #f6f9fc;">
-        <h5 class="modal-title fw-bold" id="exampleModalLabel">Your Cart</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <ul class="list-group cart-item-list list-group-horizontal  cart-product-list">
-          <li class="list-group-item  "><img src="{% static 'img/shoose01.jpg' %}" class="img-fluid " alt="">
-          </li>
-          <li class="list-group-item fw-bold"> <span class="product-name fw-bold">Sneakers</span>
-            <p class="fw-bold">$150
-              <span class="">x 1</span>
-            </p>
-          </li>
-          <li class="list-group-item mx-5 fw-bold cart-item-remove-button">X</li>
-        </ul>
-        <ul class="list-group cart-item-list list-group-horizontal">
-          <li class="list-group-item"><img src="{% static 'img/bag02.jpg' %}" class="img-fluid" alt="">
-          </li>
-          <li class=" list-group-item fw-bold"> <span class="product-names fw-bold">Backpack</span>
-            <p class="fw-bold">$150
-              <span class="">x 1</span>
-            </p>
-          </li>
-          <li class="list-group-item mx-5 fw-bold">X</li>
-        </ul>
-        <ul class="list-group cart-item-list list-group-horizontal">
-          <li class="list-group-item"><img src="{% static 'img/cap03.jpg' %}" class="img-fluid" alt="">
-          </li>
-          <li class=" list-group-item fw-bold"> <span class="product-names fw-bold">Stash
-              Hat</span>
-            <p class="fw-bold">$150
-              <span class="">x 1</span>
-            </p>
-          </li>
-          <li class="list-group-item mx-5 fw-bold">X</li>
-        </ul>
-        <div class="d-grid gap-2">
-          <button class="btn signin-button text-white" type="button"><i class="bi bi-credit-card-2-back"></i>
-            &nbsp;&nbsp;Checkout</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 <!-- sub nav bar start here -->
 <div class="main-ulist">
   <div class="container-fluid">

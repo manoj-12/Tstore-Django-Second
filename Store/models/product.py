@@ -64,7 +64,7 @@ class SizeVariant(models.Model):
     size = models.CharField(choices=SIZES, max_length=5)
 
     def __str__(self):
-        return self.size
+        return f'{self.size}'
 
 class Cart(models.Model):
     sizeVariant = models.ForeignKey(SizeVariant , on_delete=models.CASCADE)
@@ -111,3 +111,4 @@ class Payment(models.Model):
     payment_status = models.CharField(max_length=30 , default="FAILED")
     payment_id = models.CharField(max_length=100)
     payment_request_id = models.CharField(max_length=100 , unique=True , null=False)
+
