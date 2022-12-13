@@ -91,11 +91,6 @@ class Order(models.Model):
     total = models.IntegerField(null=False)
     date = models.DateTimeField(null=False , auto_now_add=True)
 
-
-
-
-
-
 class OrderItem(models.Model):
     order = models.ForeignKey(Order , on_delete=models.CASCADE)
     tshirt = models.ForeignKey(Tshirt , on_delete=models.CASCADE)
@@ -103,7 +98,6 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(null=False)
     price = models.IntegerField(null=False)
     date = models.DateTimeField(null=False, auto_now_add=True)
-
 
 class Payment(models.Model):
     order = models.ForeignKey(Order , on_delete=models.CASCADE)

@@ -1,4 +1,4 @@
-from django.shortcuts import render , redirect , HttpResponse
+from django.shortcuts import render , redirect 
 from Store .models .product import  Order ,Tshirt , OrderItem , Payment ,slider , SizeVariant , \
     Cart , Occasion ,Color , IdealFor , Sleeve , NeckType , Brand
 from math import floor
@@ -10,16 +10,12 @@ API = Instamojo(api_key=API_KEY, auth_token=AUTH_TOKEN, endpoint='https://test.i
 from django.core.paginator import Paginator
 from urllib .parse import urlencode
 
-
 def index(request):
     Slider = slider.objects.filter(Show_Slider=True)
-
     data = request.GET
     page = data.get('page')
-
     if page is None or page == '':
         page = 1
-
     Brands = data.get('brand')
     Occations = data.get('occation')
     Idealfor = data.get('idealfor')
@@ -33,9 +29,7 @@ def index(request):
     sleeve = Sleeve.objects.all()
     necktype = NeckType.objects.all()
     tshirt = Tshirt.objects.all()
-
     if Brands !="" and Brands != None:
-        # print("Brands =:",Brands)
         tshirt = tshirt.filter(brand__slug=Brands)
     if Occations !='' and Occations != None:
         tshirt = tshirt.filter(occasion__slug=Occations)
@@ -47,32 +41,12 @@ def index(request):
         tshirt = tshirt.filter(Neck_type__slug=necktypes)
     if colors != '' and colors != None:
         tshirt = tshirt.filter(color__slug=colors)
-
-
-    paginator = Paginator(tshirt , 4)
+    paginator = Paginator(tshirt , 5)
     page_obj = paginator.get_page(page)
 
     data = request.GET.copy()
     data['page']=''
     pageurl = urlencode(data)
-
-
-
-    # print('Slider',Slider)
-    
-    # for t in tshirt:
-    #     min_price = t.sizevariant_set.all().order_by('price').first()
-    #     print('Min Size = ',min_price) #found Min Size
-    #     t.min_price = min_price.price
-    #     # t.id = t.id
-    #     # print('Id = ', t.id) # tshirt id found
-    #     print('Tshirt Price = ',t.min_price) # Found Min Price
-    #     t.after_discount = t.min_price - (t.min_price * t.discount/100)
-    #     t.after_discount = floor(t.after_discount)
-    #     print(t.tshirt_name,min_price.price , min_price.size)
-       
-         
-
 
     context = {
         'occation':occation,
@@ -85,16 +59,12 @@ def index(request):
         'Slider':Slider,
         'pageurl':pageurl
     }
-
     return render(request , 'index.html' , context=context)
 
-
 def product_detail(request,slug):
-    # tshirt = Tshirt.objects.filter(id=TshirtID)
     tshirt = Tshirt.objects.get(slug=slug)
-    # print("Tshirt ID =:",tshirt.id)
     Size = request.GET.get('size')
-    # print("Size =:",Size)
+    
     if Size is None:
         size = tshirt.sizevariant_set.all().order_by('price').first()
     else:
@@ -102,9 +72,6 @@ def product_detail(request,slug):
     size_price = size.price #price without discount
     sell_price = size_price - (size_price*(tshirt.discount)/100) #sell Price
     sell_price = floor(sell_price)
-    # print(size.size)
-    # print("Price =:",size.price)
-    # print("Tshirt Name =:",tshirt.tshirt_name)
     context = {
         'tshirt':tshirt,
         'size_price':size_price,
@@ -113,6 +80,8 @@ def product_detail(request,slug):
 
     }
     return render(request,'product_detail.html', context=context)
+
+
 '''cart page '''
 def cart(request):
     cart = request.session.get('cart')
@@ -121,15 +90,15 @@ def cart(request):
     for c in cart:
         tshirt_id = c.get('tshirt')
         tshirt = Tshirt.objects.get(id=tshirt_id)
-        # print(tshirt.tshirt_name)
         c['size'] = SizeVariant.objects.get(tshirt=tshirt_id,size=c['size'])
         c['tshirt'] = tshirt
     context = {
         'cart':cart
     }
-    # print(cart)
     return render(request , "cart.html" , context=context)
 '''End cart page '''
+
+
 
 '''add to cart manage '''
 def addtocart(request , slug ,size):
@@ -141,42 +110,9 @@ def addtocart(request , slug ,size):
         cart = []
     tshirt = Tshirt.objects.get(slug=slug)
     add_cart_for_anom_user(cart, size , tshirt)
-    '''
-    temp_size = SizeVariant.objects.get(size = size , tshirt = tshirt)
-    flag = True
-    for cart_obj in cart:
-        t_id = cart_obj.get('tshirt')
-        # temp_size = cart_obj.get('size')
-        size_short = cart_obj.get('size')
-        # if t_id == tshirt.id and temp_size==size:
-        if t_id == tshirt.id and size==size_short:
-            flag = False
-            cart_obj['Quantity'] = cart_obj['Quantity']+1
-
-    if flag:
-        cart_obj = {
-            'tshirt': tshirt.id,
-            'size': size,
-            'Quantity': 1
-        }
-        cart.append(cart_obj)
-        '''
+    
     if user is not None:
         add_cart_database(user , size , tshirt)
-        '''
-            FOR PRACTICE
-            existing = Cart.objects.filter(user=user , sizeVariant = temp_size )
-            if len(existing) > 0:
-                obj = existing[0]
-                obj.Quantity = obj.Quantity+1
-                obj.save()
-            else:
-                c = Cart()
-                c.user = user
-                c.sizeVariant = temp_size
-                c.Quantity = 1
-                c.save()
-        '''
     request.session['cart']=cart #create session assign the value of cart
     return_url = request.GET.get("return_url")
     return redirect(return_url)
@@ -199,9 +135,7 @@ def add_cart_for_anom_user(cart , size , tshirt):
     flag = True
     for cart_obj in cart:
         t_id = cart_obj.get('tshirt')
-        # temp_size = cart_obj.get('size')
         size_short = cart_obj.get('size')
-        # if t_id == tshirt.id and temp_size==size:
         if t_id == tshirt.id and size == size_short:
             flag = False
             cart_obj['Quantity'] = cart_obj['Quantity'] + 1
@@ -213,7 +147,7 @@ def add_cart_for_anom_user(cart , size , tshirt):
             'Quantity': 1
         }
         cart.append(cart_obj)
-
+        
 '''End cart manage '''
 
 
@@ -228,7 +162,7 @@ def clc_total_payable_amount(cart):
     return total
 
 
-@login_required(login_url='/accounts/login')
+# @login_required(login_url='/accounts/login')
 def order(request):
     user = request.user
     order = Order.objects.filter(user=user).order_by('-date').exclude(order_status='PENDING')
@@ -240,7 +174,6 @@ def order(request):
 
 @login_required(login_url='/accounts/login')
 def checkout(request):
-    #Get Requst  Handle 
     if request.method == 'GET':
         form = CheckForm()
         cart = request.session.get('cart')
@@ -256,11 +189,9 @@ def checkout(request):
                 "checkoutform":form,
                 "cart":cart 
             }
-        # print(cart)    
         return render(request , 'checkout_form.html' , context=context)
-   
+
     else:
-        #post request handle 
         form = CheckForm(request.POST)
         user = None
         if request.user.is_authenticated:
@@ -288,7 +219,7 @@ def checkout(request):
             order.order_status = "PENDING"
             order.user = user
             order.save()
-            # Saving OrderItem
+
             for c in cart:
                 order_item = OrderItem()
                 order_item.order = order
@@ -299,7 +230,7 @@ def checkout(request):
                 order_item.size = size
                 order_item.tshirt = tshirt
                 order_item.save()
-            # print("Order Id =:",order.id)
+            
 
             # Creating Payment
             response = API.payment_request_create(
@@ -334,22 +265,19 @@ def validate_payment(request):
     response = API.payment_request_payment_status(payment_request_id,payment_id)
     status = response.get('payment_request').get('payment').get('status') # Payment status 
     print(status)   
-
     if status != 'Failed':
         try:
             payment = Payment.objects.get(payment_request_id=payment_request_id)
             payment.payment_id = payment_id
             payment.payment_status = status  
             payment.save()
-
             order = payment.order
             order.order_status = 'PLACED'
             order.save()
-
             cart = []
             request.session['cart']=cart
             Cart.objects.filter(user=user).delete()
             return redirect("order")
         except:
             return render(request ,  'payment_failed.html')
-    return render(request ,  'payment_failed.html')
+    # return render(request ,  'payment_failed.html')

@@ -30,17 +30,15 @@
             <!-- <div class="mt-2">
                 <input type="submit" class="btn signin-button text-white" value="Register">
             </div> -->
-
-            
-           
         <!-- </form> -->
+
+
         <form action="/accounts/register" method="post">
             {% csrf_token %}
             {{form|crispy}}
             <div class="row m-0">
                 <input type="submit" class="btn signin-button text-white fw-bold col-12" value="Creat Account">
-            </div>
-            
+            </div>  
         </form>
     </div>
 </div>

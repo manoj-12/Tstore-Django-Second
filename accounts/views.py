@@ -7,7 +7,6 @@ from Store .models .product import Cart , SizeVariant
 
 def register(request):
     if request.method == 'GET':
-        print('method Get =',request.method)
         form = CustomerCreationForm
         context = {
             'form':form
@@ -71,7 +70,6 @@ def login(request):
                 return redirect(next_page)
         else:
             return render(request, 'login.html' ,{'form':form})
-
 
 def LogOut(request):
     logout(request) # it is method all ready created by django

@@ -1,8 +1,6 @@
 from math import floor
 from django import template
-
 register = template.Library()
-
 
 @register.filter
 def clc_total_payable_amount(cart):
@@ -15,9 +13,6 @@ def clc_total_payable_amount(cart):
         total = total + total_of_single_product
     return total
 
-
-
-
 @register.simple_tag
 def min_price(tshirt):
     size = tshirt.sizevariant_set.all().order_by('price').first() #return min size
@@ -26,7 +21,6 @@ def min_price(tshirt):
 @register.simple_tag
 def clc_sale_price(price,discount):
     return floor( price- (price * discount / 100))
-
 
 @register.simple_tag
 def sale_price(tshirt):
@@ -38,11 +32,9 @@ def sale_price(tshirt):
 def multiply(a,b):
     return a*b
 
-
 @register.simple_tag
 def rupee():
     return f"₹"
-
 
 @register.simple_tag
 def Active_size_button(active_size , size):
@@ -50,8 +42,6 @@ def Active_size_button(active_size , size):
         return "btn-dark"
     else:
         return "btn-light"
-
-
 
 @register.simple_tag
 def selected_attr(request_slug , slug):
